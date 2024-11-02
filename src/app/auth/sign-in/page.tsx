@@ -33,7 +33,7 @@ export default function Login() {
               type="email"
               id="email"
               placeholder="email@exemplo.com"
-              className="mt-1 block w-80 border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+              className="mt-1 p-5 block w-80 border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             />
           </div>
 
@@ -45,7 +45,7 @@ export default function Login() {
               type="password"
               id="password"
               placeholder="******"
-              className="text-[#38A3A5]mt-1 block w-80 border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+              className=" p-5 text-[#38A3A5]mt-1 block w-80 border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             />
           </div>
 
