@@ -92,7 +92,7 @@ export default function RegisterClient() {
           className="w-[90%] h-auto"
         />
       </div>
-      
+       
     </div>
   );
 }

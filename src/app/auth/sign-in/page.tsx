@@ -10,7 +10,7 @@ import Ilustration from "../../../assets/ilust.svg";
 
 export default function Login() {
   return (
-    <div className="flex w-4/5 h-[80vh] items-center p-6 sm:p-8">
+    <div className="flex w-4/5 h-[80vh] gap-[5rem] items-center p-6 sm:p-8">
       <div className=" max-w-md w-full rounded-lg  p-6 sm:px-12 sm:py-9">
         <div className="mb-10 w-20 text-center">
           <Image
