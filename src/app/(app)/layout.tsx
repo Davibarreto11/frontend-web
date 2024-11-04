@@ -1,13 +1,13 @@
-// import { isAuthenticated } from '@/auth/auth'
-import BackgroundRegist from '@/assets/background-client.svg';
+import { isAuthenticated } from "@/auth/auth";
+import { redirect } from "next/navigation";
 export default function RegisterLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //   if (isAuthenticated()) {
-  //     redirect("/");
-  //   }
+  if (!isAuthenticated()) {
+    redirect("/auth/sign-in");
+  }
 
   // style={{
   //   backgroundImage: `url(${BackgroundRegist.src})`,
@@ -17,8 +17,7 @@ export default function RegisterLayout({
   // }}
 
   return (
-    
-    <div  className="flex w-ful h-screen justify-center items-center">
+    <div className="flex w-ful h-screen justify-center items-center">
       {children}
     </div>
   );
