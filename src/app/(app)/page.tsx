@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>Home</div>;
+  return <a href="api/auth/sign-out">Sign Out</a>;
 }

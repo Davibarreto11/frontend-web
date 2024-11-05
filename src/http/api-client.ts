@@ -1,27 +1,26 @@
 import ky from "ky";
-import cookiesNext from "cookies-next";
-import type { CookiesFn } from "cookies-next/lib/types";
+import { getCookie as getCookieClient } from "cookies-next";
 
 const api = ky.create({
   prefixUrl: "http://localhost:3000/api/v1",
-  // hooks: {
-  //   beforeRequest: [
-  //     async (request) => {
-  //       let cookieStore: CookiesFn | undefined;
+  hooks: {
+    beforeRequest: [
+      async (request) => {
+        let token;
 
-  //       if (typeof window === "undefined") {
-  //         const { cookies: serverCookies } = await import("next/headers");
-  //         cookieStore = serverCookies;
-  //       }
+        if (typeof window === "undefined") {
+          const { cookies } = await import("next/headers");
+          token = cookies().get("token")?.value;
+        } else {
+          token = getCookieClient("token");
+        }
 
-  //       const token = cookiesNext.getCookie("token", { cookies: cookieStore });
-
-  //       if (token) {
-  //         request.headers.set("Authorization", `Bearer ${token}`);
-  //       }
-  //     },
-  //   ],
-  // },
+        if (token) {
+          request.headers.set("Authorization", `Bearer ${token}`);
+        }
+      },
+    ],
+  },
 });
 
 export default api;

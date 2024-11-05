@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFormState } from "@/hooks/user-form-state";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword } from "./actions";
+import { signInWithEmailAndPasswordAction } from "./actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertTriangle, Loader2 } from "lucide-react";
 
@@ -12,7 +12,7 @@ export function SignInForm() {
   const router = useRouter();
 
   const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
-    signInWithEmailAndPassword,
+    signInWithEmailAndPasswordAction,
     () => {
       router.push("/");
     }
@@ -23,7 +23,7 @@ export function SignInForm() {
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
-          <AlertTitle>Sign in failed!</AlertTitle>
+          <AlertTitle>Falhar ao fazer login!</AlertTitle>
           <AlertDescription>
             <p>{message}</p>
           </AlertDescription>

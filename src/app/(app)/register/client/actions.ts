@@ -1,20 +1,20 @@
 "use server";
 
+import { createClient } from "@/http/create-client";
 import { HTTPError } from "ky";
-import { cookies } from "next/headers";
 import { z } from "zod";
 
-import { signInWithPassword } from "@/http/sign-in-with-password";
-
-const signInSchema = z.object({
+const createClientSchema = z.object({
+  name: z.string().min(5, { message: "Por favor, forneça um nome válido." }),
   email: z.string().email({ message: "Por favor, forneça um email válido." }),
-  password: z
+  cpf: z.string().min(13, { message: "Por favor, forneça um CPF válido." }),
+  phone: z
     .string()
-    .min(1, { message: "Por favor, foneça uma senha válida" }),
+    .min(11, { message: "Por favor, forneça um telefone válido." }),
 });
 
-export async function signInWithEmailAndPasswordAction(data: FormData) {
-  const result = signInSchema.safeParse(Object.fromEntries(data));
+export async function createClientAction(data: FormData) {
+  const result = createClientSchema.safeParse(Object.fromEntries(data));
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors;
@@ -22,22 +22,19 @@ export async function signInWithEmailAndPasswordAction(data: FormData) {
     return { success: false, message: null, errors };
   }
 
-  const { email, password } = result.data;
-
+  const { email, cpf, name, phone } = result.data;
   try {
-    const { token } = await signInWithPassword({
-      email,
-      password,
-    });
-
-    cookies().set("token", token, {
-      path: "/",
-      maxAge: 60 * 60 * 24 * 2, // 2 days
+    await createClient({
+      client: {
+        nome: name,
+        email,
+        cpf,
+        telefone: phone,
+      },
     });
   } catch (err) {
     if (err instanceof HTTPError) {
       const { error } = await err.response.json();
-
       return { success: false, message: error, errors: null };
     }
 
