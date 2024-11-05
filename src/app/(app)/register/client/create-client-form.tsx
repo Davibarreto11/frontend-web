@@ -24,12 +24,12 @@ export const CreateClientForm = () => {
         </Alert>
       )}
 
-      {success === true && message && (
+      {success === true && (
         <Alert variant="success">
           <AlertTriangle className="size-4" />
           <AlertTitle>Success!</AlertTitle>
           <AlertDescription>
-            <p>{message}</p>
+            <p>Client criado com sucesso</p>
           </AlertDescription>
         </Alert>
       )}
