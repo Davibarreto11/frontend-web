@@ -17,7 +17,7 @@ export default function RegisterLayout({
   // }}
 
   return (
-    <div className="flex w-ful h-screen justify-center items-center">
+    <div className="flex w-ful  px-[8rem] pt-[8rem] justify-center items-center">
       {children}
     </div>
   );
