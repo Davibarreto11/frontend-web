@@ -15,6 +15,5 @@ export async function createClient({ client }: CreateClientRequest) {
       client,
     },
   });
-  console.log(client);
   return result;
 }
