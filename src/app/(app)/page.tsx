@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {CircleArrowOutUpRight} from 'lucide-react'
 
 
 export default function Home() {
@@ -26,9 +27,12 @@ export default function Home() {
     <section className="grid grid-cols-4 gap-4 pl-[2rem]">
       <Card>
         <CardHeader>
+          <div className="flex justify-between">
           <CardTitle>
             Pedidos em Andamento
           </CardTitle>
+           <CircleArrowOutUpRight/>
+          </div>
         </CardHeader>
       </Card>
 

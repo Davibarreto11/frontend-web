@@ -10,7 +10,7 @@
 body {
   background-color: #f8f8f8;
   font-family: "Inter", sans-serif;
-  color: #2F3640;
+  color: #2F3640!important;
 }
 
 @layer utilities {
