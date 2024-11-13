@@ -9,7 +9,7 @@ const createClientSchema = z.object({
   imei: z.string().min(5, { message: "Por favor, forneça um imei válido." }),
   serie: z.string().min(7, { message: "Por favor, forneça um serie válida." }),
   name: z.string().min(6, { message: "Por favor, forneça um nome válido." }),
-  cpf: z.string().min(13, { message: "Por favor, forneça um CPF válido." }),
+  cpf: z.string().min(8, { message: "Por favor, forneça um CPF válido." }),
   device: z
     .string()
     .min(3, { message: "Por favor, forneça um aparelho válido." }),
@@ -19,16 +19,10 @@ const createClientSchema = z.object({
     .min(11, { message: "Por favor, forneça um modelo válido." }),
 });
 
-export async function createDeviceAction(data: FormData) {
-  const result = createClientSchema.safeParse(Object.fromEntries(data));
+export type ClientShema = z.infer<typeof createClientSchema>;
 
-  if (!result.success) {
-    const errors = result.error.flatten().fieldErrors;
-
-    return { success: false, message: null, errors };
-  }
-
-  const { device, cpf, name, imei, marca, model, serie } = result.data;
+export async function createDeviceAction(data: ClientShema) {
+  const { device, cpf, name, imei, marca, model, serie } = data;
   try {
     await createDevice({
       mobile_device: {

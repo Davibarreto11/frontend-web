@@ -6,6 +6,8 @@ interface GetClientByCPFResponse {
   email: string;
   telefone: string;
   nome: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export async function getClientByCPF(cpf: string) {

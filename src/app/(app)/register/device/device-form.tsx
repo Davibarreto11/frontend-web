@@ -3,38 +3,59 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { useFormState } from "@/hooks/user-form-state";
-import { createDeviceAction } from "./actions";
+import { createDeviceAction, type ClientShema } from "./actions";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useQuery } from "@tanstack/react-query";
-import { getClients } from "@/http/get-clients";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getClientByCPF } from "@/http/get-client-by-cpf";
+import { useForm } from "react-hook-form";
+import { boolean } from "zod";
 
 export const DeviceForm = () => {
-  const [cpf, setCpf] = useState("");
+  const [isLoading, serIsLoading] = useState<boolean>(false);
+  const [cpf, setcpf] = useState<string>("");
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    trigger,
+    formState: { errors },
+  } = useForm<ClientShema>({
+    mode: "onChange",
+  });
 
   const {
     isPending,
     error,
-    data: clients,
+    data: client,
     refetch,
   } = useQuery({
     queryKey: ["clients"],
-    queryFn: getClients,
-    // enabled: cpf.length > 11,
-    // retry: false,
+    queryFn: () => getClientByCPF(cpf),
+    enabled: cpf?.length > 10,
+    retry: false,
   });
 
-  console.log(clients);
+  useEffect(() => {
+    if (client && !isPending) {
+      console.log(client);
+      setValue("name", client.nome);
+      trigger("name");
+    }
+  }, [client, isPending, setValue, trigger]);
 
-  const [{ success, message, errors }, handleSubmit, isLoadind] =
-    useFormState(createDeviceAction);
+  const onSubmit = useCallback((data: ClientShema) => {
+    serIsLoading(true);
+    createDeviceAction(data);
+    serIsLoading(false);
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {success === false && message && (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
           <AlertTitle>Falha ao salvar aparelho!</AlertTitle>
@@ -52,7 +73,7 @@ export const DeviceForm = () => {
             <p>Aparelho criado com sucesso</p>
           </AlertDescription>
         </Alert>
-      )}
+      )} */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-16">
         {/* Campo CPF */}
@@ -66,16 +87,17 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="cpf"
-            name="cpf"
-            onChange={(e) => setCpf(e.target.value)}
+            {...(register("cpf"),
+            {
+              onChange: (e) => setcpf(e.target.value),
+            })}
             placeholder="123.123.123-12"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
-          {errors?.cpf && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.cpf[0]}
-            </p>
-          )}
+
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors?.cpf?.message}
+          </p>
         </div>
 
         {/* Campo Nome */}
@@ -89,15 +111,14 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="name"
-            name="name"
+            {...register("name")}
+            value={getValues("name") || ""}
             placeholder="Cristiano Oliveira"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
-          {errors?.name && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.name[0]}
-            </p>
-          )}
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.name?.message}
+          </p>
         </div>
 
         {/* Barra de separação */}
@@ -116,15 +137,13 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="marca"
-            name="marca"
+            {...register("marca")}
             placeholder="Samsung"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
-          {errors?.marca && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.marca[0]}
-            </p>
-          )}
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.marca?.message}
+          </p>
         </div>
 
         {/* Campo IMEI */}
@@ -138,15 +157,13 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="imei"
-            name="imei"
+            {...register("imei")}
             placeholder="1231204872104-1232"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
-          {errors?.imei && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.imei[0]}
-            </p>
-          )}
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.imei?.message}
+          </p>
         </div>
 
         {/* Campo Modelo */}
@@ -160,13 +177,13 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="model"
-            name="model"
+            {...register("model")}
             placeholder="SM-G990EEWJZTO"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
           {errors?.model && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.model[0]}
+              {errors.model?.message}
             </p>
           )}
         </div>
@@ -182,15 +199,13 @@ export const DeviceForm = () => {
           <Input
             type="text"
             id="serie"
-            name="serie"
+            {...register("serie")}
             placeholder="RQCW3094DAY"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
-          {errors?.serie && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.serie[0]}
-            </p>
-          )}
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.serie?.message}
+          </p>
         </div>
       </div>
 
@@ -200,7 +215,7 @@ export const DeviceForm = () => {
           type="submit"
           className="bg-teal-500 text-white text-sm py-2 px-6 rounded-md hover:bg-teal-600"
         >
-          {isLoadind ? (
+          {isLoading ? (
             <Loader2 className="size-4 animate-spin" />
           ) : (
             "Continuar"
