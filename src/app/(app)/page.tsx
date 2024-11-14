@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Image from 'next/image';
 import {
   Card,
   CardContent,
@@ -9,14 +10,15 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {CircleArrowOutUpRight} from 'lucide-react'
+import {CircleArrowOutUpRight} from 'lucide-react';
+import card1 from "@/assets/card1.svg";
 
 
 export default function Home() {
   return (
   // <a href="api/auth/sign-out">Sign Out</a>
 
-  <main className="sm:ml-14">
+  <main className="">
 
     {/* Titulo */}
     <div className="mb-[4rem]">
@@ -24,16 +26,86 @@ export default function Home() {
       <p className="text-sm ml-2 text-gray-600">Informe os dados do aparelho</p>
     </div>
 
-    <section className="grid grid-cols-4 gap-4 pl-[2rem]">
-      <Card>
+    <section className="grid w-full grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 ">
+
+      {/* CARD 1 */}
+      <Card className=" ">
         <CardHeader>
-          <div className="flex justify-between">
-          <CardTitle>
-            Pedidos em Andamento
-          </CardTitle>
-           <CircleArrowOutUpRight/>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Pedidos Pendentes
+            </CardTitle>
+            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
           </div>
+          <CardDescription>
+            Total pedidos em que ainda não começaram.
+          </CardDescription>
         </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
+      </Card>
+
+      {/* CARD 2 */}
+      <Card className="">
+        <CardHeader>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Pedidos em Andamento
+            </CardTitle>
+            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+          </div>
+          <CardDescription>
+            Total pedidos em andamentos.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
+      </Card>
+
+      {/* CARD 3 */}
+      <Card className="">
+        <CardHeader>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Pedidos Concluídos
+            </CardTitle>
+            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+          </div>
+          <CardDescription>
+            Total pedidos com manutenção concluída.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
+      </Card>
+
+      {/* CARD 4 */}
+      <Card className="">
+        <CardHeader>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Pedidos Entregues
+            </CardTitle>
+            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+          </div>
+          <CardDescription>
+            Total pedidos entregues para o cliente.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
       </Card>
 
     </section>
