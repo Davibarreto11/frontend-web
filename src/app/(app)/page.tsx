@@ -16,9 +16,10 @@ import card1 from "@/assets/card1.svg";
 
 export default function Home() {
   return (
-  // <a href="api/auth/sign-out">Sign Out</a>
+   
 
   <main className="">
+    {/* <a href="api/auth/sign-out">Sign Out</a> */}
 
     {/* Titulo */}
     <div className="mb-[4rem]">
@@ -26,7 +27,7 @@ export default function Home() {
       <p className="text-sm ml-2 text-gray-600">Informe os dados do aparelho</p>
     </div>
 
-    <section className="grid w-full grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 ">
+    <section className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4 mb-[1.5rem]">
 
       {/* CARD 1 */}
       <Card className=" ">
@@ -35,7 +36,7 @@ export default function Home() {
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
               Pedidos Pendentes
             </CardTitle>
-            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
           </div>
           <CardDescription>
             Total pedidos em que ainda não começaram.
@@ -55,7 +56,7 @@ export default function Home() {
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
               Pedidos em Andamento
             </CardTitle>
-            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
           </div>
           <CardDescription>
             Total pedidos em andamentos.
@@ -75,7 +76,7 @@ export default function Home() {
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
               Pedidos Concluídos
             </CardTitle>
-            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
           </div>
           <CardDescription>
             Total pedidos com manutenção concluída.
@@ -95,7 +96,7 @@ export default function Home() {
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
               Pedidos Entregues
             </CardTitle>
-            <CircleArrowOutUpRight className="ml-auto w-5 h-5"/>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
           </div>
           <CardDescription>
             Total pedidos entregues para o cliente.
@@ -108,6 +109,47 @@ export default function Home() {
         </CardContent>
       </Card>
 
+    </section>
+
+    <section className="grid w-full grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+
+      {/* CARD 1 */}
+      <Card className="">
+        <CardHeader>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Renda Mensal
+            </CardTitle>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
+          </div>
+          <CardDescription>
+            Veja sua renda entre os meses passados.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
+      </Card>
+
+      {/* CARD 2 */}
+      <Card className="">
+        <CardHeader>
+          <div className="flex  items-center justify-between">
+            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
+              Pedidos Recém Concluídos
+            </CardTitle>
+            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
+          </div>
+          <CardDescription>
+            Total pedidos em andamentos.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex items-center justify-between">
+          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+        </CardContent>
+      </Card>
     </section>
   </main>
     
