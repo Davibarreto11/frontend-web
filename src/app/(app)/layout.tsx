@@ -17,7 +17,7 @@ export default function RegisterLayout({
   // }}
 
   return (
-    <div className=" pt-[8rem] pl-[3rem]">
+    <div className=" pt-[8rem] px-[3rem]">
       {children}
     </div>
   );
