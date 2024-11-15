@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { clientsct, columns } from "./columns";
 import { DataTable } from "./data-table";
-import { Navbar } from "../../../components/ui/navigationM"; // Importe o Navbar
+import { Navbar } from "../../../../components/ui/navigationM"; // Importe o Navbar
 
 async function getData(): Promise<clientsct[]> {
   return [
@@ -44,8 +44,6 @@ export default function DemoPage() {
 
   return (
     <div>
-      {/* Barra de Navegação */}
-      <Navbar />
 
       <div className="container mx-auto py-10">
         <h1 className="text-3xl">Clientes Cadastrados</h1>
