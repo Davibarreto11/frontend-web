@@ -14,6 +14,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
+import { Filter } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -69,20 +71,23 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div >
-      <div className="flex items-center py-4">
+    <div className="px-8">
+      <div className="flex items-center gap-4 py-4">
         <Input
+        
           placeholder="Filter emails..."
           value={table.getColumn("email")?.getFilterValue() as string}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          
+          className="max-w-[300px] mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns
+              <Filter/>
+              Filtrar
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

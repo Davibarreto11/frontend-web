@@ -45,9 +45,12 @@ export default function DemoPage() {
   return (
     <div>
 
-      <div className="container mx-auto py-10">
-        <h1 className="text-3xl">Clientes Cadastrados</h1>
-        <p>Lista de clientes com dados de contato e data de cadastro.</p>
+      <div className="">
+        <div className="container mb-[4rem]">
+          <h1 className="text-[42px] font-bold">Clientes Cadastrados</h1>
+          <p className="text-sm ml-2 text-gray-600">Lista de clientes com dados de contato e data de cadastro.</p>
+        </div>
+
         {data ? <DataTable columns={columns} data={data} /> : <p>Carregando...</p>}
       </div>
     </div>
