@@ -21,7 +21,7 @@ export default function RegisterLayout({
 
     <div>
       <Navbar />
-      <div className=" pt-[3rem] px-[3rem]">
+      <div className=" pt-[3rem] px-[3rem] ">
         {children}
       </div>
     </div>

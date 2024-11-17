@@ -8,8 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {CircleArrowOutUpRight} from 'lucide-react';
 import card1 from "@/assets/card1.svg";
 
@@ -30,7 +28,7 @@ export default function Home() {
     <section className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4 mb-[1.5rem]">
 
       {/* CARD 1 */}
-      <Card className=" ">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
@@ -50,7 +48,7 @@ export default function Home() {
       </Card>
 
       {/* CARD 2 */}
-      <Card className="">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
@@ -70,7 +68,7 @@ export default function Home() {
       </Card>
 
       {/* CARD 3 */}
-      <Card className="">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
@@ -90,7 +88,7 @@ export default function Home() {
       </Card>
 
       {/* CARD 4 */}
-      <Card className="">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
@@ -114,7 +112,7 @@ export default function Home() {
     <section className="grid w-full grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
 
       {/* CARD 1 */}
-      <Card className="">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
@@ -133,7 +131,7 @@ export default function Home() {
       </Card>
 
       {/* CARD 2 */}
-      <Card className="">
+      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
         <CardHeader>
           <div className="flex  items-center justify-between">
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
