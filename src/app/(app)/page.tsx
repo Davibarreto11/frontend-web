@@ -8,8 +8,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {CircleArrowOutUpRight} from 'lucide-react';
+import {CircleArrowOutUpRight, ChartColumn } from 'lucide-react';
 import card1 from "@/assets/card1.svg";
+import Sales from "@/components/ui/recent-sales";
 
 
 export default function Home() {
@@ -109,7 +110,7 @@ export default function Home() {
 
     </section>
 
-    <section className="grid w-full grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+    <section className="grid w-full grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
       {/* CARD 1 */}
       <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
@@ -118,7 +119,7 @@ export default function Home() {
             <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
               Renda Mensal
             </CardTitle>
-            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
+            <a href="#"><ChartColumn  className="ml-auto w-5 h-5"/></a>
           </div>
           <CardDescription>
             Veja sua renda entre os meses passados.
@@ -131,23 +132,8 @@ export default function Home() {
       </Card>
 
       {/* CARD 2 */}
-      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
-        <CardHeader>
-          <div className="flex  items-center justify-between">
-            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
-              Pedidos Recém Concluídos
-            </CardTitle>
-            <a href="#"><CircleArrowOutUpRight className="ml-auto w-5 h-5"/></a>
-          </div>
-          <CardDescription>
-            Total pedidos em andamentos.
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex items-center justify-between">
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
-        </CardContent>
-      </Card>
+      {/* */}
+      <Sales/>
     </section>
   </main>
     
