@@ -15,7 +15,7 @@ export async function getClientByCPF(cpf: string) {
     .get(`search_clients`, {
       searchParams: { q_cpf_cont: cpf },
     })
-    .json<GetClientByCPFResponse>();
+    .json<GetClientByCPFResponse[]>();
 
   return result;
 }

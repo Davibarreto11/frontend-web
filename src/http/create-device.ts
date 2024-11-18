@@ -3,12 +3,10 @@ import api from "./api-client";
 interface CreateDeviceRequest {
   mobile_device: {
     imei: string;
-    serie: string;
-    nome: string;
-    cpf: string;
-    aparelho: string;
+    serial: string;
     marca: string;
     modelo: string;
+    client_id: string;
   };
 }
 
