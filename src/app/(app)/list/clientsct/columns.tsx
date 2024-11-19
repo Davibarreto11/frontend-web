@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ArrowUpDown } from "lucide-react"
+import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -50,6 +52,7 @@ export const columns: ColumnDef<clientsct>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  
   {
     accessorKey: "id",
     header: "ID",
@@ -81,8 +84,18 @@ export const columns: ColumnDef<clientsct>[] = [
   },
   {
     accessorKey: "email",
-    header: "E-mail",
-    cell: (info) => info.getValue(),
+    header: ({ column }) => {
+      return (
+        <Button
+        className="font-bold"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "fone",
