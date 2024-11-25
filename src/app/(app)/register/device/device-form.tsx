@@ -28,8 +28,6 @@ export const DeviceForm = () => {
     retry: false,
   });
 
-  console.log(client);
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {success === false && message && (
