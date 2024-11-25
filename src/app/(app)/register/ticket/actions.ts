@@ -1,6 +1,6 @@
 "use server";
 
-import { createDevice } from "@/http/create-device";
+import { createTicket } from "@/http/create-ticket";
 import { HTTPError } from "ky";
 import { z } from "zod";
 
@@ -29,13 +29,13 @@ export async function createTicketAction(data: FormData) {
   const { comentario, descricao, status } = result.data;
   console.log({ comentario, descricao, status });
   try {
-    // await createTicket({
-    //   mobile_device: {
-    //     modelo
-    //     serial,
-    //     client_id:
-    //   },
-    // });
+    await createTicket({
+      ticket: {
+        comentario,
+        descricao,
+        status,
+      },
+    });
   } catch (err) {
     if (err instanceof HTTPError) {
       const { error } = await err.response.json();
