@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Ilustration from "@/assets/ilust-client.svg";
-import { CreateClientForm } from "./create-client-form";
+import { CreateClientForm } from "./client-form";
 
 export default function RegisterClient() {
   return (

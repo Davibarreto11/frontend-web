@@ -1,57 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { clientsct, columns } from "./columns";
+import { columns } from "./columns";
 import { DataTable } from "./data-table";
-import { Navbar } from "../../../../components/ui/navigationM"; // Importe o Navbar
-
-async function getData(): Promise<clientsct[]> {
-  return [
-    {
-      id: "1",
-      client: "Dave Sousa",
-      date: "10/02/2004",
-      mark: "Galaxy S21 Fe",
-      status: "Andamento",
-      avatar: "c", // Adicione um link de avatar aqui se necessário
-    },
-    {
-        id: "2",
-        client: "Tave Sousa",
-        date: "10/02/2004",
-        mark: "Galaxy S21 Fe",
-        status: "Andamento",
-        avatar: "c", // Adicione um link de avatar aqui se necessário
-    },
-    {
-        id: "3",
-        client: "Lave Sousa",
-        date: "10/02/2004",
-        mark: "Galaxy S21 Fe",
-        status: "Andamento",
-        avatar: "c", // Adicione um link de avatar aqui se necessário
-    },
-    // Outros dados
-  ];
-}
+import { useQuery } from "@tanstack/react-query";
+import { getTickets } from "@/http/get-device-ticket";
 
 export default function DemoPage() {
-  const [data, setData] = useState<clientsct[] | null>(null);
+  const {
+    error,
+    data: tickets,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["tickets"],
+    queryFn: getTickets,
+  });
 
-  useEffect(() => {
-    getData().then((fetchedData) => setData(fetchedData));
-  }, []);
+  const filterTickets = tickets?.filter(
+    (ticket) =>
+      ticket.status !== "Pedido reprovado entregue" &&
+      ticket.status !== "Pedido entregue"
+  );
+
+  if (isLoading) return <p>Carregando...</p>;
+
+  if (error) return <p>Ocorreu um erro ao carregar os dados.</p>;
 
   return (
     <div>
       {/* Barra de Navegação */}
-      <Navbar />
 
       <div className="container mx-auto py-10">
-        <h1 className="text-3xl">Ordens em Andamento</h1>
-        <p>Lista de clientes com dados de contato e data de cadastro.</p>
-        {data ? <DataTable columns={columns} data={data} /> : <p>Carregando...</p>}
+        <h1 className="text-[42px] font-bold">Ordens em Andamento</h1>
+        <p className="text-sm ml-2 text-gray-600">
+          Lista de clientes com dados de contato e data de cadastro.
+        </p>
+        {/* Passando o array completo ticket */}
+        {tickets && tickets.length > 0 ? (
+          <DataTable columns={columns} data={filterTickets} />
+        ) : (
+          <p>Sem dados disponíveis.</p>
+        )}
       </div>
     </div>
   );
-} 
+}
