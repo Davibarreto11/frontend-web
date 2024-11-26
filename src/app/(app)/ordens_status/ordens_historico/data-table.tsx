@@ -152,7 +152,10 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody className="">
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="hover:bg-gray-100">
+              <TableRow
+                key={row.id}
+                className="bg-white rounded-xl shadow-[0_0px_19px_-5px_rgba(0,0,0,0.10)] hover:bg-gray-100 transition-colors"
+              >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell className="py-4" key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

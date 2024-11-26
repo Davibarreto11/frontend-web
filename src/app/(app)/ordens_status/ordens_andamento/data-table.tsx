@@ -156,13 +156,16 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody className="">
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="hover:bg-gray-100 border-2">
+              <TableRow
+                key={row.id}
+                className="bg-white rounded-xl shadow-[0_0px_19px_-5px_rgba(0,0,0,0.10)] hover:bg-gray-100 transition-colors"
+              >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell className="py-4" key={cell.id}>
+                  <TableCell className="py-6 px-4 border-none" key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-                <TableCell>
+                <TableCell className="">
                   <Drawer>
                     <DrawerTrigger>
                       {/* <FiMoreVertical size={20} />{" "} */}

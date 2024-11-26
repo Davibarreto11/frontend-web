@@ -2,22 +2,11 @@
 
 import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowUpDown } from "lucide-react"
-import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
+import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowUpDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
+import { Button } from "@/components/ui/button";
 
 // Definindo o tipo de dados
 export type clientsct = {
@@ -54,7 +43,7 @@ export const columns: ColumnDef<clientsct>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  
+
   {
     accessorKey: "id",
     header: "ID",
@@ -69,18 +58,17 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "Perfil",
     cell: ({ row }) => (
       <div className="flex items-center space-x-2 ">
-
-      <div className="flex items-center space-x-2 font-bold ">
-        <Avatar>
-          <AvatarImage
-            src={row.original.avatar}
-            alt={`${row.original.nome}'s avatar`}
-          />
-          <AvatarFallback className="bg-[#32a8a2]">
-            {row.original.nome.substr(0, 1)}
-          </AvatarFallback>
-        </Avatar>
-      </div>
+        <div className="flex items-center space-x-2 font-bold ">
+          <Avatar>
+            <AvatarImage
+              src={row.original.avatar}
+              alt={`${row.original.nome}'s avatar`}
+            />
+            <AvatarFallback className="bg-[#32a8a2]">
+              {row.original.nome.substr(0, 1)}
+            </AvatarFallback>
+          </Avatar>
+        </div>
       </div>
     ),
   },
@@ -105,14 +93,14 @@ export const columns: ColumnDef<clientsct>[] = [
     header: ({ column }) => {
       return (
         <Button
-        className="font-bold"
+          className="font-bold"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: (info) => info.getValue(),
   },
@@ -126,4 +114,4 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "CPF",
     cell: (info) => info.getValue(),
   },
-]
+];
