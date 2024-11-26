@@ -4,6 +4,20 @@ import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Checkbox } from "@/components/ui/checkbox"
+import { ArrowUpDown } from "lucide-react"
+import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 // Definindo o tipo de dados
 export type clientsct = {
@@ -19,6 +33,29 @@ export type clientsct = {
 // Definindo as colunas
 export const columns: ColumnDef<clientsct>[] = [
   {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  
+  {
     accessorKey: "id",
     header: "ID",
     cell: (info) => (
@@ -31,6 +68,8 @@ export const columns: ColumnDef<clientsct>[] = [
     accessorKey: "avatar",
     header: "Perfil",
     cell: ({ row }) => (
+      <div className="flex items-center space-x-2 ">
+
       <div className="flex items-center space-x-2 font-bold ">
         <Avatar>
           <AvatarImage
@@ -42,11 +81,12 @@ export const columns: ColumnDef<clientsct>[] = [
           </AvatarFallback>
         </Avatar>
       </div>
+      </div>
     ),
   },
   {
     accessorKey: "nome",
-    header: "Cliente",
+    header: "Client",
     cell: (info) => info.getValue(),
   },
   {
@@ -62,7 +102,18 @@ export const columns: ColumnDef<clientsct>[] = [
   },
   {
     accessorKey: "email",
-    header: "E-mail",
+    header: ({ column }) => {
+      return (
+        <Button
+        className="font-bold"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: (info) => info.getValue(),
   },
   {
@@ -75,4 +126,4 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "CPF",
     cell: (info) => info.getValue(),
   },
-];
+]
