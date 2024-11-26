@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Checkbox } from "@/components/ui/checkbox"
 import { ArrowUpDown } from "lucide-react"
-import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -23,10 +22,9 @@ export type clientsct = {
   id: string;
   client: string;
   date: string;
-  email: string;
-  fone: string;
+  status: "Em andamento" | "Pendente" | "Reparo concluido" | "Peça em trânsito" | "Orçamento aprovado" | "Orçamento reprovado" | "Pedido Entregue";
+  mark: string;
   avatar: string;
-  cpf:string;
 };
 
 // Definindo as colunas
@@ -67,8 +65,6 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "Perfil",
     cell: ({ row }) => (
       <div className="flex items-center space-x-2 ">
-
-      <div className="flex items-center space-x-2 font-bold ">
         <Avatar>
           <AvatarImage src={row.original.avatar} alt={`${row.original.client}'s avatar`} />
           <AvatarFallback className= "bg-[#32a8a2]">{row.original.client.charAt(0)}</AvatarFallback>
@@ -77,41 +73,24 @@ export const columns: ColumnDef<clientsct>[] = [
     ),
   },
   {
+    accessorKey: "mark",
+    header: "Dispositivo",
+    cell: (info) => info.getValue(),
+  },
+  {
     accessorKey: "client",
-    header: "Client",
     header: "Cliente",
     cell: (info) => (info.getValue()),
   },
   {
     accessorKey: "date",
-    header: "Data do Cadastro",
+    header: "Data da conclusão",
     cell: (info) => info.getValue(),
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-        className="font-bold"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    header: "E-mail",
+    accessorKey: "status",
+    header: "Status",
     cell: (info) => info.getValue(),
   },
-  {
-    accessorKey: "fone",
-    header: "Telefone",
-    cell: (info) => info.getValue(),
-  },
-  {
-    accessorKey: "cpf",
-    header: "CPF",
-    cell: (info) => info.getValue(),
-  },
+ 
 ];

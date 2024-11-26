@@ -13,6 +13,7 @@ async function getData(): Promise<clientsct[]> {
       date: "10/02/2004",
       email: "m@example.com",
       fone: "(88) 9 9906-4345",
+      avatar: "c", // Adicione um link de avatar aqui se necessário
       avatar: "c",
       cpf:"123.123.123-11" // Adicione um link de avatar aqui se necessário
     },
@@ -22,6 +23,7 @@ async function getData(): Promise<clientsct[]> {
       date: "15/03/2005",
       email: "ana@example.com",
       fone: "(11) 9 1234-5678",
+      avatar: "c", // Adicione um link de avatar aqui se necessário
       avatar: "c",
       cpf:"122.122.122-21"  // Adicione um link de avatar aqui se necessário
     },
@@ -31,6 +33,7 @@ async function getData(): Promise<clientsct[]> {
       date: "20/04/2006",
       email: "carlos@example.com",
       fone: "(21) 9 8765-4321",
+      avatar: "c", // Adicione um link de avatar aqui se necessário
       avatar: "c",
       cpf:"143.143.143-41"  // Adicione um link de avatar aqui se necessário
     },
@@ -47,6 +50,14 @@ export default function DemoPage() {
 
   return (
     <div>
+      {/* Barra de Navegação */}
+      <Navbar />
+
+      <div className="container mx-auto py-10">
+        <h1 className="text-3xl">Clientes Cadastrados</h1>
+        <p>Lista de clientes com dados de contato e data de cadastro.</p>
+        {data ? <DataTable columns={columns} data={data} /> : <p>Carregando...</p>}
+
 
       <div className="">
         <div className="container mb-[6rem] mt-[2rem] ml-[12rem]">
