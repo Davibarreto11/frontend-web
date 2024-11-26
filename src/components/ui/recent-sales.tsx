@@ -150,7 +150,7 @@ export default function Sales(){
 
             </CardContent>
         </ScrollArea>
-            <div className="pt-6"></div>
+            <div className="pt-8"></div>
       </Card> 
     );
 }

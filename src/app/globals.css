@@ -13,6 +13,31 @@ body {
   color: #2F3640!important;
 }
 
+.card-background {
+  background-Position: center;
+}
+
+/* Estilo padrão (para telas menores) */
+.page-layout {
+  min-height: 100vh; /* Altura mínima da tela */
+  background-size: cover; /* Faz o background cobrir a tela inteira */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+}
+/* Telas muito grandes (>= 1280px) */
+@media (min-width: 1280px) {
+  .page-layout {
+    background-image: url('../assets/Home-lg.jpg');
+  }
+}
+
+/* Telas extra grandes (>= 1536px) */
+@media (min-width: 1536px) {
+  .page-layout {
+    background-image: url('../assets/Home.jpg');
+  }
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

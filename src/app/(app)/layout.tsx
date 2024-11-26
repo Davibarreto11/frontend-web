@@ -10,18 +10,11 @@ export default function RegisterLayout({
     redirect("/auth/sign-in");
   }
 
-  // style={{
-  //   backgroundImage: `url(${BackgroundRegist.src})`,
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center',
-  //   backgroundRepeat: 'no-repeat'
-  // }}
-
   return (
 
-    <div>
+    <div className="page-layout">
       <Navbar />
-      <div className=" pt-[3rem] px-[3rem] ">
+      <div className=" pt-[2rem] px-[3rem] ">
         {children}
       </div>
     </div>

@@ -10,6 +10,10 @@ import {
 } from "@/components/ui/card"
 import {CircleArrowOutUpRight, ChartColumn } from 'lucide-react';
 import card1 from "@/assets/card1.svg";
+import card2 from "@/assets/card2.svg";
+import card3 from "@/assets/card3.svg";
+import card4 from "@/assets/card4.svg";
+import cardmad from "@/assets/cardmad.png";
 import Sales from "@/components/ui/recent-sales";
 
 
@@ -21,12 +25,12 @@ export default function Home() {
     {/* <a href="api/auth/sign-out">Sign Out</a> */}
 
     {/* Titulo */}
-    <div className="mb-[4rem]">
-      <h1 className="text-[42px] font-bold">Registrar Aparelho</h1>
-      <p className="text-sm ml-2 text-gray-600">Informe os dados do aparelho</p>
+    <div className="mb-[2.8rem]">
+      <h1 className="text-[42px] font-bold">Bem Vindo, User</h1>
+      <p className="text-sm ml-2 font-semibold text-gray-600">Acompanhe suas estatísticas diárias</p>
     </div>
 
-    <section className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4 mb-[1.5rem]">
+    <section className="grid  w-full grid-cols-2 lg:grid-cols-4 gap-4 mb-[1rem]">
 
       {/* CARD 1 */}
       <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
@@ -41,10 +45,12 @@ export default function Home() {
             Total pedidos em que ainda não começaram.
           </CardDescription>
         </CardHeader>
-
         <CardContent className="flex items-center justify-between">
-          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+          <div className="flex items-center gap-1">
+            <span className="text-base sm:text-[1.6rem] font-bold text-teal-500">8 </span>
+            <span className="text-base sm:text-xl font-bold">- Pedidos</span>
+          </div>
+          <Image src={card1} alt="Ilustração" className="w-[30%]"/>
         </CardContent>
       </Card>
 
@@ -63,8 +69,11 @@ export default function Home() {
         </CardHeader>
 
         <CardContent className="flex items-center justify-between">
-          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+          <div className="flex items-center gap-1">
+            <span className="text-base sm:text-[1.6rem] font-bold text-teal-500">8 </span>
+            <span className="text-base sm:text-xl font-bold">- Pedidos</span>
+          </div>
+          <Image src={card2} alt="Ilustração" className="w-[40%]"/>
         </CardContent>
       </Card>
 
@@ -83,8 +92,11 @@ export default function Home() {
         </CardHeader>
 
         <CardContent className="flex items-center justify-between">
-          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+          <div className="flex items-center gap-1">
+            <span className="text-base sm:text-[1.6rem] font-bold text-teal-500">8 </span>
+            <span className="text-base sm:text-xl font-bold">- Pedidos</span>
+          </div>
+          <Image src={card3} alt="Ilustração" className="w-[25%]"/>
         </CardContent>
       </Card>
 
@@ -103,8 +115,11 @@ export default function Home() {
         </CardHeader>
 
         <CardContent className="flex items-center justify-between">
-          <p className="text-base sm:text-lg font-bold">8 Pedidos</p>
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
+          <div className="flex items-center gap-1">
+            <span className="text-base sm:text-[1.6rem] font-bold text-teal-500">8 </span>
+            <span className="text-base sm:text-xl font-bold">- Pedidos</span>
+          </div>
+          <Image src={card4} alt="Ilustração" className="w-[30%]"/>
         </CardContent>
       </Card>
 
@@ -127,12 +142,8 @@ export default function Home() {
         </CardHeader>
 
         <CardContent className="flex items-center justify-between">
-          {/* <Image src={card1} alt="Ilustração" className="sm:w-[35%]"/> */}
         </CardContent>
       </Card>
-
-      {/* CARD 2 */}
-      {/* */}
       <Sales/>
     </section>
   </main>
