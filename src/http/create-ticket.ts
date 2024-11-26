@@ -10,7 +10,7 @@ interface CreateTicketRequest {
     sintoma?: string;
     anexo?: string;
     pecas?: string;
-    mobile_device_id?: string;
+    mobile_device_id: string;
   };
 }
 

@@ -16,7 +16,7 @@ import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Textarea } from "@/components/ui/textarea";
 import { useQuery } from "@tanstack/react-query";
-import { getDeviceByIMEI } from "@/http/get-ticket-by-imei";
+import { getDeviceByIMEI } from "@/http/get-device-by-imei";
 import { useState } from "react";
 import { useFormState } from "@/hooks/user-form-state";
 import { createTicketAction } from "./actions";
@@ -45,7 +45,7 @@ export function TicketForm() {
   } = useQuery({
     queryKey: ["clients"],
     queryFn: () => getDeviceByIMEI(imei),
-    enabled: imei?.length > 10,
+    enabled: imei?.length > 14,
     retry: false,
   });
 
@@ -163,6 +163,19 @@ export function TicketForm() {
           </p>
         )}
       </div>
+
+      <Input
+        type="hidden"
+        id="descricao"
+        name="mobile_device_id"
+        value={device && device[0]?.id}
+        className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+      />
+      {errors?.descricao && (
+        <p className="text-xs font-medium text-red-500 dark:text-red-400">
+          {errors.descricao[0]}
+        </p>
+      )}
 
       {/* Botão de Cadastro */}
       <div className="flex justify-end mt-8">

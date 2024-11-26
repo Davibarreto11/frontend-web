@@ -5,6 +5,8 @@ import { HTTPError } from "ky";
 import { z } from "zod";
 
 const createTicketSchema = z.object({
+  mobile_device_id: z.string(),
+  imei: z.string().min(15, "").nullable(),
   status: z
     .string()
     .min(1, { message: "Por favor, forneça um status válido." }),
@@ -26,11 +28,12 @@ export async function createTicketAction(data: FormData) {
     return { success: false, message: null, errors };
   }
 
-  const { comentario, descricao, status } = result.data;
+  const { mobile_device_id, comentario, descricao, status } = result.data;
   console.log({ comentario, descricao, status });
   try {
     await createTicket({
       ticket: {
+        mobile_device_id,
         comentario,
         descricao,
         status,

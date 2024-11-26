@@ -41,16 +41,13 @@ import {
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
@@ -58,13 +55,12 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-// import { FiMoreVertical } from "react-icons/fi";
 
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  data: any;
+  data: TData[];
 }
 
 // Componente DataTable
@@ -116,7 +112,7 @@ export function DataTable<TData, TValue>({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns
+              Filtro
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -156,7 +152,7 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody className="">
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="hover:bg-gray-100 border-2">
+              <TableRow key={row.id} className="hover:bg-gray-100">
                 {row.getVisibleCells().map((cell) => (
                   <TableCell className="py-4" key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -164,44 +160,59 @@ export function DataTable<TData, TValue>({
                 ))}
                 <TableCell>
                   <Drawer>
-                    <DrawerTrigger>
-                      {/* <FiMoreVertical size={20} />{" "} */}
-                    </DrawerTrigger>
+                    {/* <FiMoreVertical size={20} /> */}
+                    <DrawerTrigger> </DrawerTrigger>
                     <DrawerContent>
                       <DrawerHeader>
                         <DrawerTitle>Cliente</DrawerTitle>
+                        <hr></hr>
                         <DrawerDescription>
                           <Table className="mb-8">
                             <TableHeader>
                               <TableRow>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Nome
                                 </TableHead>
-                                <TableHead className="w-[100px]">CPF</TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
+                                  CPF
+                                </TableHead>
+                                <TableHead className="w-[100px] font-bold">
                                   Telefone
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   E-mail
                                 </TableHead>
                               </TableRow>
                             </TableHeader>
                             <TableBody>
-                              <TableRow
-                                key={row.id}
-                                className="bg-white rounded-xl shadow-[0_0px_19px_-5px_rgba(0,0,0,0.10)] hover:bg-gray-100 transition-colors"
-                              >
-                                {row.getVisibleCells().map((cell) => (
-                                  <TableCell
-                                    key={cell.id}
-                                    className="py-6 px-4 border-none"
-                                  >
-                                    {flexRender(
-                                      cell.column.columnDef.cell,
-                                      cell.getContext()
-                                    )}
-                                  </TableCell>
-                                ))}
+                              <TableRow>
+                                <TableCell className="w-[100px]">
+                                  Baraka
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  123.123.123-12
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  (88) 9 9912-1234
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  baraka@gmail.com
+                                </TableCell>
+                              </TableRow>
+
+                              <TableRow>
+                                <TableCell className="w-[100px]">
+                                  Baraka
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  123.123.123-12
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  (88) 9 9912-1234
+                                </TableCell>
+                                <TableCell className="w-[100px]">
+                                  baraka@gmail.com
+                                </TableCell>
                               </TableRow>
                             </TableBody>
                           </Table>
@@ -212,37 +223,33 @@ export function DataTable<TData, TValue>({
                                 Open
                               </DropdownMenuTrigger>
                               <DropdownMenuContent>
-                                <DropdownMenuLabel>
-                                  My Account
-                                </DropdownMenuLabel>
+                                <DropdownMenuLabel>Opções</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem>Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Billing</DropdownMenuItem>
-                                <DropdownMenuItem>Team</DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  Subscription
-                                </DropdownMenuItem>
+                                <DropdownMenuItem>Editar</DropdownMenuItem>
+                                <DropdownMenuItem>Deletar</DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </DrawerFooter>
 
                           <DrawerTitle>Aparelho</DrawerTitle>
+                          <hr></hr>
+
                           <Table className="mb-8">
                             <TableHeader>
-                              <TableRow>
-                                <TableHead className="w-[100px]">
+                              <TableRow className="">
+                                <TableHead className="w-[100px] font-bold">
                                   Nome
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Marca
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Modelo
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   IMEI
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   N Série
                                 </TableHead>
                               </TableRow>
@@ -291,34 +298,30 @@ export function DataTable<TData, TValue>({
                                 Open
                               </DropdownMenuTrigger>
                               <DropdownMenuContent>
-                                <DropdownMenuLabel>
-                                  My Account
-                                </DropdownMenuLabel>
+                                <DropdownMenuLabel>Opções</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem>Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Billing</DropdownMenuItem>
-                                <DropdownMenuItem>Team</DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  Subscription
-                                </DropdownMenuItem>
+                                <DropdownMenuItem>Editar</DropdownMenuItem>
+                                <DropdownMenuItem>Deletar</DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </DrawerFooter>
 
                           <DrawerTitle>Defeitos</DrawerTitle>
+                          <hr></hr>
+
                           <Table className="">
                             <TableHeader>
                               <TableRow>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Defeito
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Peças
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Observações
                                 </TableHead>
-                                <TableHead className="w-[100px]">
+                                <TableHead className="w-[100px] font-bold">
                                   Status
                                 </TableHead>
                               </TableRow>
@@ -336,7 +339,7 @@ export function DataTable<TData, TValue>({
                                   dia em baixo da água, display já trocado antes
                                 </TableCell>
                                 <TableCell className="w-25">
-                                  Em Andamento
+                                  Concluido
                                 </TableCell>
                               </TableRow>
 
@@ -352,7 +355,7 @@ export function DataTable<TData, TValue>({
                                   dia em baixo da água, display já trocado antes
                                 </TableCell>
                                 <TableCell className="w-25">
-                                  Em Andamento
+                                  Concluido
                                 </TableCell>
                               </TableRow>
                             </TableBody>
@@ -364,16 +367,10 @@ export function DataTable<TData, TValue>({
                                 Open
                               </DropdownMenuTrigger>
                               <DropdownMenuContent>
-                                <DropdownMenuLabel>
-                                  My Account
-                                </DropdownMenuLabel>
+                                <DropdownMenuLabel>Opções</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem>Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Billing</DropdownMenuItem>
-                                <DropdownMenuItem>Team</DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  Subscription
-                                </DropdownMenuItem>
+                                <DropdownMenuItem>Editar</DropdownMenuItem>
+                                <DropdownMenuItem>Deletar</DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </DrawerFooter>

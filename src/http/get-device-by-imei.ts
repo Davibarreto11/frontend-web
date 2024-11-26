@@ -9,8 +9,8 @@ interface GetDeviceByIMEIResponse {
 
 export async function getDeviceByIMEI(imei: string) {
   const result = await api
-    .get(`search_device`, {
-      searchParams: { q_cpf_cont: imei },
+    .get(`search_mobile_devices`, {
+      searchParams: { q_imei_cont: imei },
     })
     .json<GetDeviceByIMEIResponse[]>();
 
