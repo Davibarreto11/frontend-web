@@ -7,10 +7,17 @@ import { createClientAction } from "./actions";
 import { useFormState } from "@/hooks/user-form-state";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useRouter } from "next/navigation";
 
 export const CreateClientForm = () => {
-  const [{ success, message, errors }, handleSubmit, isPending] =
-    useFormState(createClientAction);
+  const router = useRouter();
+
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
+    createClientAction,
+    async () => {
+      router.push("/register/device");
+    }
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -19,7 +26,7 @@ export const CreateClientForm = () => {
           <AlertTriangle className="size-4" />
           <AlertTitle>Falha ao salvar cliente!</AlertTitle>
           <AlertDescription>
-            <p>{message}</p>
+            <p>Error ao criar cliente com sucesso</p>
           </AlertDescription>
         </Alert>
       )}
@@ -29,7 +36,7 @@ export const CreateClientForm = () => {
           <AlertTriangle className="size-4" />
           <AlertTitle>Success!</AlertTitle>
           <AlertDescription>
-            <p>Client criado com sucesso</p>
+            <p>Cliente criado com sucesso</p>
           </AlertDescription>
         </Alert>
       )}

@@ -20,6 +20,7 @@ import { getDeviceByIMEI } from "@/http/get-device-by-imei";
 import { useState } from "react";
 import { useFormState } from "@/hooks/user-form-state";
 import { createTicketAction } from "./actions";
+import { useRouter } from "next/navigation";
 
 const sintomas = [
   "Pendente",
@@ -33,8 +34,12 @@ const sintomas = [
 ];
 
 export function TicketForm() {
-  const [{ success, message, errors }, handleSubmit, isPending] =
-    useFormState(createTicketAction);
+  const router = useRouter();
+
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
+    createTicketAction,
+    async () => router.push("/")
+  );
 
   const [imei, setIMEI] = useState<string>("");
 

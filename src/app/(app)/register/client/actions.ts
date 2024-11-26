@@ -32,6 +32,8 @@ export async function createClientAction(data: FormData) {
         telefone: phone,
       },
     });
+
+    // redirect("/register/device");
   } catch (err) {
     if (err instanceof HTTPError) {
       const { error } = await err.response.json();

@@ -10,12 +10,19 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getClientByCPF } from "@/http/get-client-by-cpf";
 import { useFormState } from "@/hooks/user-form-state";
+import { useRouter } from "next/navigation";
 
 export const DeviceForm = () => {
+  const router = useRouter();
+
   const [cpf, setcpf] = useState<string>("");
 
-  const [{ success, message, errors }, handleSubmit, isPending] =
-    useFormState(createDeviceAction);
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
+    createDeviceAction,
+    async () => {
+      router.push("/register/ticket");
+    }
+  );
 
   const {
     error,
