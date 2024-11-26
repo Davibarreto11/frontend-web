@@ -17,7 +17,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-
 // Definindo o tipo de dados
 export type clientsct = {
   id: string;
@@ -26,7 +25,7 @@ export type clientsct = {
   email: string;
   fone: string;
   avatar: string;
-  cpf:string;
+  cpf: string;
 };
 
 // Definindo as colunas
@@ -53,7 +52,6 @@ export const columns: ColumnDef<clientsct>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  
 
   {
     accessorKey: "id",
@@ -66,21 +64,20 @@ export const columns: ColumnDef<clientsct>[] = [
     accessorKey: "avatar",
     header: "Perfil",
     cell: ({ row }) => (
-      <div className="flex items-center space-x-2 ">
-
-      <div className="flex items-center space-x-2 font-bold ">
+      <div className="flex items-center space-x-2">
         <Avatar>
           <AvatarImage src={row.original.avatar} alt={`${row.original.client}'s avatar`} />
-          <AvatarFallback className= "bg-[#32a8a2]">{row.original.client.charAt(0)}</AvatarFallback>
+          <AvatarFallback className="bg-[#32a8a2]">
+            {row.original.client.charAt(0)}
+          </AvatarFallback>
         </Avatar>
       </div>
     ),
   },
   {
     accessorKey: "client",
-    header: "Client",
-    header: "Cliente",
-    cell: (info) => (info.getValue()),
+    header: "Cliente",  // Corrigido para apenas uma chave 'header'
+    cell: (info) => info.getValue(),
   },
   {
     accessorKey: "date",
@@ -92,7 +89,7 @@ export const columns: ColumnDef<clientsct>[] = [
     header: ({ column }) => {
       return (
         <Button
-        className="font-bold"
+          className="font-bold"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -101,7 +98,6 @@ export const columns: ColumnDef<clientsct>[] = [
         </Button>
       )
     },
-    header: "E-mail",
     cell: (info) => info.getValue(),
   },
   {
@@ -114,4 +110,4 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "CPF",
     cell: (info) => info.getValue(),
   },
-];
+]

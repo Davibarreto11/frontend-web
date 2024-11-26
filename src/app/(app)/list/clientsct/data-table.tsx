@@ -29,7 +29,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { Filter } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -58,12 +57,6 @@ import {
   Table,
   TableBody,
   TableCaption,
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Table,
-  TableBody,
   TableCell,
   TableHead,
   TableHeader,
@@ -110,9 +103,6 @@ export function DataTable<TData, TValue>({
     <div >
       <div className="flex items-center py-4">
         <Input
-    <div className="w-[80%] flex flex-col justify-center">
-      <div className="flex items-center px-10 gap-4">
-        <Input
           placeholder="Filter emails..."
           value={table.getColumn("email")?.getFilterValue() as string}
           onChange={(event) =>
@@ -157,44 +147,6 @@ export function DataTable<TData, TValue>({
                 headerGroup.headers.map((header) => (
                   <TableCell key={header.id} className="font-semibold">
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-          
-          className="max-w-[300px] mt-1 p-5 border-2 w-full border-gray-300 rounded-md focus:border-teal-500 focus:ring-teal-500"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              <Filter/>
-              Filtrar
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table.getAllColumns().filter((column) => column.getCanHide()).map((column) => (
-              <DropdownMenuCheckboxItem
-                key={column.id}
-                className="capitalize"
-                checked={column.getIsVisible()}
-                onCheckedChange={(value) => column.toggleVisibility(!!value)}
-              >
-                {column.id}
-              </DropdownMenuCheckboxItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      <div className="p-2">
-        <Table className="border-separate border-spacing-y-4 p-6">
-          <TableHeader>
-            <TableRow>
-              {table.getHeaderGroups().map((headerGroup) =>
-                headerGroup.headers.map((header) => (
-                  <TableCell
-                    key={header.id}
-                    className="font-semibold text-[#2F3640] pb-4"
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableCell>
                 ))
               )}
@@ -278,25 +230,6 @@ export function DataTable<TData, TValue>({
   </PaginationContent>
       </Pagination>
       </div>
-
-          <TableBody>
-            {table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                className="bg-white rounded-xl shadow-[0_0px_19px_-5px_rgba(0,0,0,0.10)] hover:bg-gray-100 transition-colors"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="py-6 px-4 border-none">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-
-
     </div>
   )
 }

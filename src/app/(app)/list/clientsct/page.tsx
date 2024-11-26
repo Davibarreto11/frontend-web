@@ -14,7 +14,6 @@ async function getData(): Promise<clientsct[]> {
       email: "m@example.com",
       fone: "(88) 9 9906-4345",
       avatar: "c", // Adicione um link de avatar aqui se necessário
-      avatar: "c",
       cpf:"123.123.123-11" // Adicione um link de avatar aqui se necessário
     },
     {
@@ -24,7 +23,6 @@ async function getData(): Promise<clientsct[]> {
       email: "ana@example.com",
       fone: "(11) 9 1234-5678",
       avatar: "c", // Adicione um link de avatar aqui se necessário
-      avatar: "c",
       cpf:"122.122.122-21"  // Adicione um link de avatar aqui se necessário
     },
     {
@@ -34,7 +32,6 @@ async function getData(): Promise<clientsct[]> {
       email: "carlos@example.com",
       fone: "(21) 9 8765-4321",
       avatar: "c", // Adicione um link de avatar aqui se necessário
-      avatar: "c",
       cpf:"143.143.143-41"  // Adicione um link de avatar aqui se necessário
     },
     // Outros dados
@@ -70,5 +67,6 @@ export default function DemoPage() {
 
       </div>
     </div>
+  </div>
   );
-} 
+  } 
