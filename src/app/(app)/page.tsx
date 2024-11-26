@@ -15,6 +15,7 @@ import card3 from "@/assets/card3.svg";
 import card4 from "@/assets/card4.svg";
 import cardmad from "@/assets/cardmad.png";
 import Sales from "@/components/ui/recent-sales";
+import Dashboard from "@/components/ui/dashboard";
 
 
 export default function Home() {
@@ -127,23 +128,8 @@ export default function Home() {
 
     <section className="grid w-full grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
-      {/* CARD 1 */}
-      <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
-        <CardHeader>
-          <div className="flex  items-center justify-between">
-            <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
-              Renda Mensal
-            </CardTitle>
-            <a href="#"><ChartColumn  className="ml-auto w-5 h-5"/></a>
-          </div>
-          <CardDescription>
-            Veja sua renda entre os meses passados.
-          </CardDescription>
-        </CardHeader>
+      <Dashboard/>
 
-        <CardContent className="flex items-center justify-between">
-        </CardContent>
-      </Card>
       <Sales/>
     </section>
   </main>
