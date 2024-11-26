@@ -1,5 +1,4 @@
 import { isAuthenticated } from "@/auth/auth";
-import { Navbar } from "@/components/ui/navigationM";
 import { redirect } from "next/navigation";
 export default function RegisterLayout({
   children,
@@ -10,13 +9,16 @@ export default function RegisterLayout({
     redirect("/auth/sign-in");
   }
 
-  return (
+  // style={{
+  //   backgroundImage: `url(${BackgroundRegist.src})`,
+  //   backgroundSize: 'cover',
+  //   backgroundPosition: 'center',
+  //   backgroundRepeat: 'no-repeat'
+  // }}
 
-    <div className="page-layout">
-      <Navbar />
-      <div className=" pt-[2rem] px-[3rem] ">
-        {children}
-      </div>
+  return (
+    <div className="flex w-full justify-center items-center">
+      {children}
     </div>
   );
 }

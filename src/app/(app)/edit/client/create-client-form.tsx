@@ -48,7 +48,7 @@ export const CreateClientForm = () => {
             name="name"
             id="name"
             placeholder="Seu nome"
-            className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
           {errors?.name && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
@@ -70,7 +70,7 @@ export const CreateClientForm = () => {
             name="email"
             id="email"
             placeholder="email@exemplo.com"
-            className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
           {errors?.email && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
@@ -92,7 +92,7 @@ export const CreateClientForm = () => {
             id="phone"
             name="phone"
             placeholder="(XX) XXXX-XXXX"
-            className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
           {errors?.phone && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
@@ -114,7 +114,7 @@ export const CreateClientForm = () => {
             id="cpf"
             name="cpf"
             placeholder="123.123.123-12"
-            className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
           />
           {errors?.cpf && (
             <p className="text-xs font-medium text-red-500 dark:text-red-400">
@@ -134,7 +134,7 @@ export const CreateClientForm = () => {
           {isPending ? (
             <Loader2 className="size-4 animate-spin" />
           ) : (
-            "Cadastrar"
+            "Confirmar"
           )}
         </Button>
       </div>

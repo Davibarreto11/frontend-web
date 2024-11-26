@@ -73,25 +73,8 @@ export function SignInForm() {
       </div>
 
       <div className="flex items-center justify-between mb-10">
-        <div className="flex items-center">
-          <Checkbox
-            id="keep-connected"
-            className="text-teal-500 border-[#38A3A5] appearance-none checked:bg-[#38A3A5]"
-          />
-          <Label
-            htmlFor="keep-connected"
-            className="ml-1 text-xs text-gray-700"
-          >
-            Manter conectado
-          </Label>
-        </div>
-        <p className="text-xs ml-2">
-          Esqueceu sua
-          <a href="#" className="text-xs text-teal-600 hover:underline">
-            senha
-          </a>
-          ?
-        </p>
+
+
       </div>
 
       <Button

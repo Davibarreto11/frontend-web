@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Ilustration from "@/assets/ilust-client.svg";
-import { CreateClientForm } from "./client-form";
+import { CreateClientForm } from "./create-client-form";
 
 export default function RegisterClient() {
   return (
@@ -11,9 +11,9 @@ export default function RegisterClient() {
       {/* Formulário */}
       <div className="w-full lg:w-3/5 space-y-6">
         <div className="mb-[6rem]">
-          <h1 className="text-[42px] font-bold">Cadastro de Cliente</h1>
+          <h1 className="text-[42px] font-bold">Editar Cliente</h1>
           <p className="text-sm ml-2  text-gray-600">
-            Informe os dados do cliente
+            Altere os dados do cliente como desejar
           </p>
         </div>
 

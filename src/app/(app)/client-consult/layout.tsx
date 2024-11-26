@@ -12,11 +12,8 @@ export default function RegisterLayout({
 
   return (
 
-    <div className="page-layout">
-      <Navbar />
-      <div className=" pt-[2rem] px-[3rem] ">
+      <div className=" flex items-center justify-center">
         {children}
       </div>
-    </div>
   );
 }
