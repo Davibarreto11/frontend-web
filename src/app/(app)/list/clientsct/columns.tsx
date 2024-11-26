@@ -26,6 +26,7 @@ export type clientsct = {
   email: string;
   fone: string;
   avatar: string;
+  cpf:string;
 };
 
 // Definindo as colunas
@@ -53,6 +54,7 @@ export const columns: ColumnDef<clientsct>[] = [
     enableHiding: false,
   },
   
+
   {
     accessorKey: "id",
     header: "ID",
@@ -65,6 +67,8 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "Perfil",
     cell: ({ row }) => (
       <div className="flex items-center space-x-2 ">
+
+      <div className="flex items-center space-x-2 font-bold ">
         <Avatar>
           <AvatarImage src={row.original.avatar} alt={`${row.original.client}'s avatar`} />
           <AvatarFallback className= "bg-[#32a8a2]">{row.original.client.charAt(0)}</AvatarFallback>
@@ -75,6 +79,7 @@ export const columns: ColumnDef<clientsct>[] = [
   {
     accessorKey: "client",
     header: "Client",
+    header: "Cliente",
     cell: (info) => (info.getValue()),
   },
   {
@@ -96,10 +101,17 @@ export const columns: ColumnDef<clientsct>[] = [
         </Button>
       )
     },
+    header: "E-mail",
+    cell: (info) => info.getValue(),
   },
   {
     accessorKey: "fone",
     header: "Telefone",
+    cell: (info) => info.getValue(),
+  },
+  {
+    accessorKey: "cpf",
+    header: "CPF",
     cell: (info) => info.getValue(),
   },
 ];
