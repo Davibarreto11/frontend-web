@@ -65,7 +65,7 @@ export const columns: ColumnDef<clientsct>[] = [
               alt={`${row.original.nome}'s avatar`}
             />
             <AvatarFallback className="bg-[#32a8a2]">
-              {row.original.nome.substr(0, 1)}
+              {row.original.nome?.substr(0, 1)}
             </AvatarFallback>
           </Avatar>
         </div>
