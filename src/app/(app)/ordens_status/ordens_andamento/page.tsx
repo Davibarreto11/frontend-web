@@ -19,7 +19,7 @@ export default function DemoPage() {
   const filterTickets = tickets?.filter(
     (ticket) =>
       ticket.status !== "Pedido reprovado entregue" &&
-      ticket.status !== "Pedido Entregue"
+      ticket.status !== "Pedido entregue"
   );
 
   if (isLoading) return <p>Carregando...</p>;
@@ -37,7 +37,7 @@ export default function DemoPage() {
         </p>
         {/* Passando o array completo ticket */}
         {tickets && tickets.length > 0 ? (
-          <DataTable columns={columns} data={tickets} />
+          <DataTable columns={columns} data={filterTickets} />
         ) : (
           <p>Sem dados disponíveis.</p>
         )}

@@ -7,7 +7,7 @@ import Image from "next/image";
 import Logo from "../../assets/logo.png";
 import { cn } from "@/lib/utils"; // Certifique-se de que `cn` esteja configurado corretamente para unir classes.
 import { useRouter } from "next/navigation";
-import { Avatar,AvatarFallback, AvatarImage  } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -23,8 +23,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { UserPlus, Smartphone, UserSearch} from 'lucide-react';
-
+import { UserPlus, Smartphone, UserSearch } from "lucide-react";
 
 export function Navbar() {
   const router = useRouter();
@@ -38,61 +37,84 @@ export function Navbar() {
 
       {/* Links de Navegação */}
       <div className=" flex space-x-32 items-center">
-        
-          <Menubar className="border-none shadow-none ">
-            <MenubarMenu>
-              <Link href="/">
-              <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">Home</MenubarTrigger>
+        <Menubar className="border-none shadow-none ">
+          <MenubarMenu>
+            <Link href="/">
+              <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">
+                Home
+              </MenubarTrigger>
+            </Link>
+          </MenubarMenu>
+
+          <MenubarMenu>
+            <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">
+              Registrar
+            </MenubarTrigger>
+            <MenubarContent>
+              <Link href="/register/client">
+                <MenubarItem>
+                  Cliente{" "}
+                  <MenubarShortcut>
+                    <UserPlus />
+                  </MenubarShortcut>
+                </MenubarItem>
               </Link>
-            </MenubarMenu>
+              <MenubarSeparator />
+              <Link href="/register/device">
+                <MenubarItem>
+                  Aparelho{" "}
+                  <MenubarShortcut>
+                    <Smartphone />
+                  </MenubarShortcut>
+                </MenubarItem>
+              </Link>
+            </MenubarContent>
+          </MenubarMenu>
 
-            <MenubarMenu>
-              <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">Registrar</MenubarTrigger>
-              <MenubarContent>
-                <Link href='/register/client'>
-                  <MenubarItem>
-                    Cliente <MenubarShortcut><UserPlus/></MenubarShortcut>
-                  </MenubarItem>
-                </Link>
-                <MenubarSeparator />
-                <Link href='/register/device'>
-                  <MenubarItem>
-                    Aparelho <MenubarShortcut><Smartphone/></MenubarShortcut>
-                  </MenubarItem>
-                </Link>
-              </MenubarContent>
-            </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">
+              Listar
+            </MenubarTrigger>
+            <MenubarContent>
+              <Link href="/list/clientsct">
+                <MenubarItem>
+                  Cliente{" "}
+                  <MenubarShortcut>
+                    <UserSearch />
+                  </MenubarShortcut>
+                </MenubarItem>
+              </Link>
 
-            <MenubarMenu>              
-              <MenubarTrigger className=" text-[18px] hover:text-[#2F8385] transition ease-in-out delay-100 duration-450 text-[#3ca399] font-semibold cursor-pointer">Listar</MenubarTrigger>
-              <MenubarContent>
-                <Link href='/list/clientsct'>
-                  <MenubarItem>
-                    Cliente <MenubarShortcut><UserSearch/></MenubarShortcut>
-                  </MenubarItem>
-                </Link>
-                <MenubarSeparator />
-                <Link href='/register/device'>
-                  <MenubarItem>
-                    Aparelho <MenubarShortcut><Smartphone/></MenubarShortcut>
-                  </MenubarItem>
-                </Link>
-              </MenubarContent>
-            </MenubarMenu>
-          </Menubar>
+              <Link href="/ordens_status/ordens_andamento">
+                <MenubarItem>
+                  Ordens
+                  <MenubarShortcut>
+                    <Smartphone />
+                  </MenubarShortcut>
+                </MenubarItem>
+              </Link>
+              <MenubarSeparator />
+              <Link href="/ordens_status/ordens_historico">
+                <MenubarItem>
+                  Histórico
+                  <MenubarShortcut>
+                    <Smartphone />
+                  </MenubarShortcut>
+                </MenubarItem>
+              </Link>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
 
-
-        <Avatar className="w-12 h-12" >
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" className=" hover:brightness-[.85] transition ease-in-out delay-75 duration-450 cursor-pointer "/>
+        <Avatar className="w-12 h-12">
+          <AvatarImage
+            src="https://github.com/shadcn.png"
+            alt="@shadcn"
+            className=" hover:brightness-[.85] transition ease-in-out delay-75 duration-450 cursor-pointer "
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-
       </div>
-
-
     </nav>
-
-
-
   );
 }
