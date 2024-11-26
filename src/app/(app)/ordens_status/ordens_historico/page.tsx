@@ -12,7 +12,7 @@ async function getData(): Promise<clientsct[]> {
       client: "Dave Sousa",
       date: "10/02/2004",
       mark: "Galaxy S21 Fe",
-      status: "Orçamento reprovado",
+      status: "Pendente",
       avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     {
@@ -20,7 +20,7 @@ async function getData(): Promise<clientsct[]> {
         client: "Tave Sousa",
         date: "10/02/2004",
         mark: "Galaxy S21 Fe",
-        status: "Orçamento reprovado",
+        status: "Pendente",
         avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     {
@@ -28,7 +28,7 @@ async function getData(): Promise<clientsct[]> {
         client: "Lave Sousa",
         date: "10/02/2004",
         mark: "Galaxy S21 Fe",
-        status: "Orçamento reprovado",
+        status: "Reparo concluido",
         avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     // Outros dados
