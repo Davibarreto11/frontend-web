@@ -14,6 +14,8 @@ async function getData(): Promise<clientsct[]> {
       email: "m@example.com",
       fone: "(88) 9 9906-4345",
       avatar: "c", // Adicione um link de avatar aqui se necessário
+      avatar: "c",
+      cpf:"123.123.123-11" // Adicione um link de avatar aqui se necessário
     },
     {
       id: "2",
@@ -22,6 +24,8 @@ async function getData(): Promise<clientsct[]> {
       email: "ana@example.com",
       fone: "(11) 9 1234-5678",
       avatar: "c", // Adicione um link de avatar aqui se necessário
+      avatar: "c",
+      cpf:"122.122.122-21"  // Adicione um link de avatar aqui se necessário
     },
     {
       id: "3",
@@ -30,6 +34,8 @@ async function getData(): Promise<clientsct[]> {
       email: "carlos@example.com",
       fone: "(21) 9 8765-4321",
       avatar: "c", // Adicione um link de avatar aqui se necessário
+      avatar: "c",
+      cpf:"143.143.143-41"  // Adicione um link de avatar aqui se necessário
     },
     // Outros dados
   ];
@@ -51,6 +57,17 @@ export default function DemoPage() {
         <h1 className="text-3xl">Clientes Cadastrados</h1>
         <p>Lista de clientes com dados de contato e data de cadastro.</p>
         {data ? <DataTable columns={columns} data={data} /> : <p>Carregando...</p>}
+
+
+      <div className="">
+        <div className="container mb-[6rem] mt-[2rem] ml-[12rem]">
+          <h1 className="text-[42px] font-bold">Clientes Cadastrados</h1>
+          <p className="text-sm ml-2 text-gray-600">Lista de clientes com dados de contato e data de cadastro.</p>
+        </div>
+        <div className="flex flex-col items-center">       
+           {data ? <DataTable columns={columns} data={data} /> : <p>Carregando...</p>}
+        </div>
+
       </div>
     </div>
   );
