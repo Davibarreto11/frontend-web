@@ -94,7 +94,7 @@ export function Navbar() {
                 </MenubarItem>
               </Link>
 
-              <Link href="/ordens_status/ordens_andamento">
+              <Link href="/ordens_status/ordens_geral">
                 <MenubarItem>
                   Ordens
                   <MenubarShortcut>
@@ -103,7 +103,7 @@ export function Navbar() {
                 </MenubarItem>
               </Link>
               <MenubarSeparator />
-              <Link href="/ordens_status/ordens_geral">
+              <Link href="/ordens_status/ordens_historico">
                 <MenubarItem>
                   Histórico
                   <MenubarShortcut>

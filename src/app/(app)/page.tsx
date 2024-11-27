@@ -32,7 +32,7 @@ export default function Home() {
 
   const filterTicketsAndamento = useMemo(() => {
     const andamento = tickets?.filter(
-      (ticket) => ticket.status === "Em Andamento"
+      (ticket) => ticket.status === "Em andamento"
     );
     if (!andamento) return;
 
