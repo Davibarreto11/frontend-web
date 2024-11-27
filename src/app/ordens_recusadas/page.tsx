@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { clientsct, columns } from "./columns";
 import { DataTable } from "./data-table";
-import { Navbar } from "../../../../components/ui/navigationM"; // Importe o Navbar
+import { Navbar } from "../../components/ui/navigationM"; // Importe o Navbar
 
 async function getData(): Promise<clientsct[]> {
   return [
@@ -12,7 +12,7 @@ async function getData(): Promise<clientsct[]> {
       client: "Dave Sousa",
       date: "10/02/2004",
       mark: "Galaxy S21 Fe",
-      status: "Pendente",
+      status: "Orçamento reprovado",
       avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     {
@@ -20,7 +20,7 @@ async function getData(): Promise<clientsct[]> {
         client: "Tave Sousa",
         date: "10/02/2004",
         mark: "Galaxy S21 Fe",
-        status: "Pendente",
+        status: "Orçamento reprovado",
         avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     {
@@ -28,7 +28,7 @@ async function getData(): Promise<clientsct[]> {
         client: "Lave Sousa",
         date: "10/02/2004",
         mark: "Galaxy S21 Fe",
-        status: "Reparo concluido",
+        status: "Orçamento reprovado",
         avatar: "c", // Adicione um link de avatar aqui se necessário
     },
     // Outros dados

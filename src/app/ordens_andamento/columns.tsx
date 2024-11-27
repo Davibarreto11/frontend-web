@@ -22,7 +22,7 @@ export type clientsct = {
   id: string;
   client: string;
   date: string;
-  status: "Em andamento" | "Pendente" | "Reparo concluido" | "Peça em trânsito" | "Orçamento aprovado" | "Orçamento reprovado" | "Pedido Entregue";
+  status: "Em andamento" | "Pendente" | "Reparo concluido" | "Peças em trânsito" | "Orçamento reprovado" | "Pedido Entregue";
   mark: string;
   avatar: string;
 };
@@ -79,12 +79,12 @@ export const columns: ColumnDef<clientsct>[] = [
   },
   {
     accessorKey: "client",
-    header: "Cliente",
+    header: "Client",
     cell: (info) => (info.getValue()),
   },
   {
     accessorKey: "date",
-    header: "Data da conclusão",
+    header: "Data do Cadastro",
     cell: (info) => info.getValue(),
   },
   {

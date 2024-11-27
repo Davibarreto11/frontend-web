@@ -157,12 +157,12 @@ export function DataTable<TData, TValue>({
                   </TableCell>
                 ))}
                 <TableCell>
-                <Drawer>
+<Drawer>
   <DrawerTrigger> <FiMoreVertical size={20} /> </DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
       <DrawerTitle>Cliente</DrawerTitle>
-      <DrawerDescription>
+<DrawerDescription>
   <Table className="mb-8">
   <TableHeader>
     <TableRow>
@@ -195,12 +195,10 @@ export function DataTable<TData, TValue>({
 <DropdownMenu>
   <DropdownMenuTrigger className=" rounded-sm border h-10 bg-emerald-500 text-black">Open</DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuLabel>Abrir</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Billing</DropdownMenuItem>
-    <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuItem>Editar</DropdownMenuItem>
+    <DropdownMenuItem>Excluir</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 </DrawerFooter>
@@ -240,12 +238,10 @@ export function DataTable<TData, TValue>({
 <DropdownMenu>
   <DropdownMenuTrigger className=" rounded-sm border h-10 bg-emerald-500 text-black">Open</DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+  <DropdownMenuLabel>Abrir</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Billing</DropdownMenuItem>
-    <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuItem>Editar</DropdownMenuItem>
+    <DropdownMenuItem>Excluir</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 </DrawerFooter>
@@ -281,12 +277,10 @@ export function DataTable<TData, TValue>({
 <DropdownMenu>
   <DropdownMenuTrigger className=" rounded-sm border h-10 bg-emerald-500 text-black">Open</DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+  <DropdownMenuLabel>Abrir</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Billing</DropdownMenuItem>
-    <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuItem>Editar</DropdownMenuItem>
+    <DropdownMenuItem>Excluir</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 </DrawerFooter>

@@ -22,7 +22,7 @@ export type clientsct = {
   id: string;
   client: string;
   date: string;
-  status: "Andamento" | "Pendente" | "Concluido" | "Em espera";
+  status: "Em andamento" | "Pendente" | "Reparo concluido" | "Peças em trânsito" | "Orçamento reprovado" | "Pedido Entregue";
   mark: string;
   avatar: string;
 };
