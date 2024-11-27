@@ -37,7 +37,7 @@ export async function createClientAction(data: FormData) {
   } catch (err) {
     if (err instanceof HTTPError) {
       const { error } = await err.response.json();
-      return { success: false, message: error, errors: null };
+      return { success: false, message: error.message, errors: null };
     }
 
     console.log(err);

@@ -42,7 +42,7 @@ export default function Sales({ tickets }: SalesProps) {
       <CardHeader>
         <div className="flex  items-center justify-between">
           <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
-            Pedidos Recém Concluídos
+            Pedidos Recém Entregues
           </CardTitle>
           <a href="#">
             <Clock3 className="ml-auto w-5 h-5" />
@@ -78,7 +78,7 @@ export default function Sales({ tickets }: SalesProps) {
                   <div className="text-[13px] text-[#38A3A5]  items-center sm:text-base sm:font-semibold flex gap-2">
                     <DollarSign />
                     <span className="text-[#2F2E41]">R$:</span>
-                    <p>{`${ticket.repair_price || 0},00`}</p>
+                    <p>{`${ticket.repair_price || 0}0`}</p>
                   </div>
 
                   {/* Separador */}

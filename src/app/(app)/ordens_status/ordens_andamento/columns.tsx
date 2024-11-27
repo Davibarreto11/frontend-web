@@ -117,4 +117,6 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "Status",
     cell: (info) => info.getValue(),
   },
+
+  
 ];

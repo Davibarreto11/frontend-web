@@ -35,6 +35,7 @@ export const DeviceForm = () => {
     retry: false,
   });
 
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {success === false && message && (

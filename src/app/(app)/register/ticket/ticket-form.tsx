@@ -22,7 +22,7 @@ import { useFormState } from "@/hooks/user-form-state";
 import { createTicketAction } from "./actions";
 import { useRouter } from "next/navigation";
 
-const sintomas = [
+const status = [
   "Pendente",
   "Em andamento",
   "Orçamento aprovado",
@@ -32,6 +32,8 @@ const sintomas = [
   "Reparo concluído",
   "Pedido entregue",
 ];
+
+const sintoma = [ "Energia", "Software", "Hardware"];
 
 export function TicketForm() {
   const router = useRouter();
@@ -81,7 +83,7 @@ export function TicketForm() {
           htmlFor="sintoma"
           className="block text-sm font-medium text-gray-700"
         >
-          Sintoma
+          IMEI
         </Label>
         <Input
           type="text"
@@ -103,7 +105,36 @@ export function TicketForm() {
           htmlFor="sintoma"
           className="block text-sm font-medium text-gray-700"
         >
-          Sintoma
+          Status
+        </Label>
+        <Select name="status">
+          <SelectTrigger className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500">
+            <SelectValue placeholder="Selecione o Status de Inicio " />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Status</SelectLabel>
+              {status.map((status, index) => (
+                <SelectItem key={index} value={String(index)}>
+                  {status}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        {errors?.status && (
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.status[0]}
+          </p>
+        )}
+      </div>
+
+      <div className="flex-1 min-w-[230px]">
+        <Label
+          htmlFor="sintoma"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Sintomas
         </Label>
         <Select name="status">
           <SelectTrigger className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500">
@@ -112,7 +143,7 @@ export function TicketForm() {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Sintomas</SelectLabel>
-              {sintomas.map((sintoma, index) => (
+              {sintoma.map((sintoma, index) => (
                 <SelectItem key={index} value={String(index)}>
                   {sintoma}
                 </SelectItem>

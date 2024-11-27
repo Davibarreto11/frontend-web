@@ -19,6 +19,7 @@ export const CreateClientForm = () => {
     }
   );
 
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {success === false && message && (
@@ -26,7 +27,7 @@ export const CreateClientForm = () => {
           <AlertTriangle className="size-4" />
           <AlertTitle>Falha ao salvar cliente!</AlertTitle>
           <AlertDescription>
-            <p>Error ao criar cliente com sucesso</p>
+            <p>{message}</p>
           </AlertDescription>
         </Alert>
       )}

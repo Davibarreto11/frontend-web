@@ -21,11 +21,11 @@ export async function createDeviceAction(data: FormData) {
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors;
-
     return { success: false, message: null, errors };
   }
 
   const { clientId, name, cpf, imei, marca, model, serial } = result.data;
+
   try {
     await createDevice({
       mobile_device: {
@@ -39,7 +39,7 @@ export async function createDeviceAction(data: FormData) {
   } catch (err) {
     if (err instanceof HTTPError) {
       const { error } = await err.response.json();
-      return { success: false, message: error, errors: null };
+      return { success: false, message: error.message, errors: null };
     }
 
     console.log(err);

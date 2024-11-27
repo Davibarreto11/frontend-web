@@ -167,8 +167,8 @@ export function DataTable<TData, TValue>({
                 ))}
                 <TableCell className="">
                   <Drawer>
-                    <DrawerTrigger>
-                      {/* <FiMoreVertical size={20} />{" "} */}
+                    <DrawerTrigger asChild>
+                    <Button variant="outline">Detalhes</Button>
                     </DrawerTrigger>
                     <DrawerContent>
                       <DrawerHeader>
