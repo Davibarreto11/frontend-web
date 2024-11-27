@@ -83,11 +83,11 @@ export default function Home() {
         {/* CARD 1 */}
         <Card className=" border-none shadow-[0px_0px_19px_-5px_rgba(0,0,0,0.25)]">
           <CardHeader>
-            <div className="flex  items-center justify-between">
+            <div className="flex items-center justify-between">
               <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
                 Pedidos Pendentes
               </CardTitle>
-              <a href="#">
+              <a href="/ordens_status/ordens_pendente">
                 <CircleArrowOutUpRight className="ml-auto w-5 h-5" />
               </a>
             </div>
@@ -113,7 +113,7 @@ export default function Home() {
               <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
                 Pedidos em Andamento
               </CardTitle>
-              <a href="#">
+              <a href="/ordens_status/ordens_andamento">
                 <CircleArrowOutUpRight className="ml-auto w-5 h-5" />
               </a>
             </div>
@@ -138,7 +138,7 @@ export default function Home() {
               <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
                 Pedidos Concluídos
               </CardTitle>
-              <a href="#">
+              <a href="/ordens_status/ordens_concluido">
                 <CircleArrowOutUpRight className="ml-auto w-5 h-5" />
               </a>
             </div>
@@ -165,7 +165,7 @@ export default function Home() {
               <CardTitle className="text-lg sm:text-xl text-[#2F3640] ">
                 Pedidos Entregues
               </CardTitle>
-              <a href="#">
+              <a href="/ordens_status/ordens_entregues">
                 <CircleArrowOutUpRight className="ml-auto w-5 h-5" />
               </a>
             </div>

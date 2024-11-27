@@ -1,6 +1,5 @@
 "use client";
-
-import { columns } from "./columns";
+import { columns } from "./columns"; // Colunas definidas
 import { DataTable } from "./data-table";
 import { useQuery } from "@tanstack/react-query";
 import { getTickets } from "@/http/get-device-ticket";
@@ -16,28 +15,22 @@ export default function DemoPage() {
     queryFn: getTickets,
   });
 
-  const filterTickets = tickets?.filter(
-    (ticket) => ticket.status === "Em andamento"
+  const filterTicket = tickets?.filter(
+    (ticket) => ticket.status === "Reparo concluido"
   );
 
   if (isLoading) return <p>Carregando...</p>;
-
   if (error) return <p>Ocorreu um erro ao carregar os dados.</p>;
 
   return (
     <div>
-      {/* Barra de Navegação */}
-
       <div className="container mx-auto py-10">
-        <h1 className="text-[42px] font-bold">Ordens em Andamento</h1>
-        <p className="text-sm ml-2 text-gray-600">
-          Lista de clientes com status em andamento.
-        </p>
-        {/* Passando o array completo ticket */}
-        {tickets && tickets.length > 0 ? (
-          <DataTable columns={columns} data={filterTickets} />
+        <h1 className="text-3xl">Histórico de ordens</h1>
+        <p>Lista de clientes com dados de contato e data de cadastro.</p>
+        {tickets ? (
+          <DataTable columns={columns} data={filterTicket!} />
         ) : (
-          <p>Sem dados disponíveis.</p>
+          <p>Carregando...</p>
         )}
       </div>
     </div>

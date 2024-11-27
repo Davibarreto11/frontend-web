@@ -49,7 +49,7 @@ export default function Dashboard({ tickets }: DashboardProps) {
       const ticketMonthYear = getTicketMonthYear(ticket.created_at);
       if (counts.hasOwnProperty(ticketMonthYear)) {
         counts[ticketMonthYear].count += 1;
-        counts[ticketMonthYear].total += ticket?.repair_price || 0;
+        counts[ticketMonthYear].total += Number(ticket?.repair_price) || 0;
       }
     });
 

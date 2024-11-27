@@ -2,7 +2,10 @@ import api from "./api-client";
 
 interface GetDeviceByIMEIResponse {
   id: string;
-
+  imei: string;
+  serial: string;
+  modelo: string;
+  marca: string;
   createdAt: string;
   updatedAt: string;
 }

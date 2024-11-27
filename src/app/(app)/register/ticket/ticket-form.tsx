@@ -21,6 +21,8 @@ import { useState } from "react";
 import { useFormState } from "@/hooks/user-form-state";
 import { createTicketAction } from "./actions";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const status = [
   "Pendente",
@@ -33,14 +35,40 @@ const status = [
   "Pedido entregue",
 ];
 
-const sintoma = [ "Energia", "Software", "Hardware"];
+const sintoma = ["Energia", "Software", "Hardware"];
 
 export function TicketForm() {
+  const { toast } = useToast();
+
   const router = useRouter();
 
   const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
     createTicketAction,
-    async () => router.push("/")
+    () => {
+      toast({
+        variant: "default",
+        title: "Redirecionando para criar ticket",
+        description:
+          "Aparelho cadastrado com sucesso vamos redirecionar você para dashboard",
+        action: <Loader2 className="size-6 animate-spin" />,
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 4000);
+    },
+    () => {
+      if (!isPending && errors) {
+        toast({
+          variant: "destructive",
+          title: "Redirecionando para criar device",
+          description: "Ticket com esse IMEI já existe.",
+          action: <Loader2 className="size-6 animate-spin" />,
+        }) &&
+          setTimeout(() => {
+            router.push("/register/ticket");
+          }, 4000);
+      }
+    }
   );
 
   const [imei, setIMEI] = useState<string>("");
@@ -50,7 +78,7 @@ export function TicketForm() {
     data: device,
     refetch,
   } = useQuery({
-    queryKey: ["clients"],
+    queryKey: ["devices"],
     queryFn: () => getDeviceByIMEI(imei),
     enabled: imei?.length > 14,
     retry: false,
@@ -58,6 +86,7 @@ export function TicketForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 mt-6">
+      <Toaster />
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
@@ -98,6 +127,20 @@ export function TicketForm() {
             {errors.imei[0]}
           </p>
         )}
+      </div>
+
+      <div className="flex-1 min-w-[230px]">
+        <Label
+          htmlFor="sintoma"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Aparelho do cliente
+        </Label>
+        <Input
+          value={device && device[0]?.modelo}
+          defaultValue="Pesquise o modelo"
+          className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+        />
       </div>
 
       <div className="flex-1 min-w-[230px]">
@@ -202,16 +245,10 @@ export function TicketForm() {
 
       <Input
         type="hidden"
-        id="descricao"
         name="mobile_device_id"
         value={device && device[0]?.id}
         className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
       />
-      {errors?.descricao && (
-        <p className="text-xs font-medium text-red-500 dark:text-red-400">
-          {errors.descricao[0]}
-        </p>
-      )}
 
       {/* Botão de Cadastro */}
       <div className="flex justify-end mt-8">

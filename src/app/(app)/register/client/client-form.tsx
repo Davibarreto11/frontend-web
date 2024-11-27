@@ -8,20 +8,46 @@ import { useFormState } from "@/hooks/user-form-state";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export const CreateClientForm = () => {
+  const { toast } = useToast();
   const router = useRouter();
 
   const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
     createClientAction,
-    async () => {
-      router.push("/register/device");
+    () => {
+      toast({
+        variant: "default",
+        title: "Redirecionando para criar device",
+        description: "Cliente cadastrado com sucesso vamos redirecionar você",
+        action: <Loader2 className="size-6 animate-spin" />,
+      });
+      setTimeout(() => {
+        router.push("/register/device");
+      }, 4000);
+    },
+    () => {
+      if (!isPending && errors) {
+        toast({
+          variant: "destructive",
+          title: "Redirecionando para criar device",
+          description: "Cliente já existe vamos redirecionar você",
+          action: <Loader2 className="size-6 animate-spin" />,
+        }) &&
+          setTimeout(() => {
+            router.push("/register/device");
+          }, 4000);
+      }
     }
   );
 
+  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <Toaster />
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />

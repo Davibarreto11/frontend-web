@@ -23,7 +23,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { UserPlus, Smartphone, UserSearch } from "lucide-react";
+import { UserPlus, Smartphone, UserSearch, Ticket } from "lucide-react";
 
 export function Navbar() {
   const router = useRouter();
@@ -68,6 +68,15 @@ export function Navbar() {
                   </MenubarShortcut>
                 </MenubarItem>
               </Link>
+              <MenubarSeparator />
+              <Link href="/register/ticket">
+                <MenubarItem>
+                  Ticket{" "}
+                  <MenubarShortcut>
+                    <Ticket />
+                  </MenubarShortcut>
+                </MenubarItem>
+              </Link>
             </MenubarContent>
           </MenubarMenu>
 
@@ -94,7 +103,7 @@ export function Navbar() {
                 </MenubarItem>
               </Link>
               <MenubarSeparator />
-              <Link href="/ordens_status/ordens_historico">
+              <Link href="/ordens_status/ordens_geral">
                 <MenubarItem>
                   Histórico
                   <MenubarShortcut>
@@ -114,6 +123,8 @@ export function Navbar() {
           />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
+
+        <Link href="/api/auth/sign-out">Sair</Link>
       </div>
     </nav>
   );

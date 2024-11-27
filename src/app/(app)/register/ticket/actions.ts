@@ -6,7 +6,7 @@ import { z } from "zod";
 
 const createTicketSchema = z.object({
   mobile_device_id: z.string(),
-  imei: z.string().min(15, "").nullable(),
+  imei: z.string().min(15, "Por favor, forneça o IMEI do aparelho").nullable(),
   status: z
     .string()
     .min(1, { message: "Por favor, forneça um status válido." }),
@@ -29,7 +29,6 @@ export async function createTicketAction(data: FormData) {
   }
 
   const { mobile_device_id, comentario, descricao, status } = result.data;
-  console.log({ comentario, descricao, status });
   try {
     await createTicket({
       ticket: {
