@@ -47,9 +47,9 @@ export function TicketForm() {
     () => {
       toast({
         variant: "default",
-        title: "Redirecionando para criar ticket",
+        title: "Redirecionando para Dashboard",
         description:
-          "Aparelho cadastrado com sucesso vamos redirecionar você para dashboard",
+          "Ticket cadastrado com sucesso vamos redirecionar você para dashboard",
         action: <Loader2 className="size-6 animate-spin" />,
       });
       setTimeout(() => {
@@ -60,9 +60,8 @@ export function TicketForm() {
       if (!isPending && errors) {
         toast({
           variant: "destructive",
-          title: "Redirecionando para criar device",
+          title: "Error na criação de ticket",
           description: "Ticket com esse IMEI já existe.",
-          action: <Loader2 className="size-6 animate-spin" />,
         }) &&
           setTimeout(() => {
             router.push("/register/ticket");

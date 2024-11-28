@@ -1,12 +1,14 @@
 "use server";
 
-import { createTicket } from "@/http/create-ticket";
+import { updateIcket } from "@/http/update-ticket";
 import { HTTPError } from "ky";
 import { z } from "zod";
 
-const createTicketSchema = z.object({
-  mobile_device_id: z.string(),
-  imei: z.string().min(15, "Por favor, forneça o IMEI do aparelho").nullable(),
+const TicketSchema = z.object({
+  id: z.string(),
+  repair_price: z.string().min(1, { message: "Por favor, forneça o preco" }),
+  pecas:z.any(),
+  sintoma: z.string(),
   status: z
     .string()
     .min(1, { message: "Por favor, forneça um status válido." }),
@@ -18,24 +20,35 @@ const createTicketSchema = z.object({
     .min(1, { message: "Por favor, forneça um comentario válido." }),
 });
 
-type TicketShema = z.infer<typeof createTicketSchema>;
+export type TicketShema = z.infer<typeof TicketSchema>;
 
-export async function createTicketAction(data: FormData) {
-  const result = createTicketSchema.safeParse(Object.fromEntries(data));
-
+export async function updateTicketAction(data: FormData) {
+  const result = TicketSchema.safeParse(Object.fromEntries(data));
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors;
+    console.log(errors)
     return { success: false, message: null, errors };
   }
+  const {
+    repair_price,
+    comentario,
+    descricao,
+    status,
+    id,
+    sintoma,
+    pecas,
+  } = result.data;
 
-  const { mobile_device_id, comentario, descricao, status } = result.data;
   try {
-    await createTicket({
+    await updateIcket({
       ticket: {
-        mobile_device_id,
+        sintoma,
+        id: Number(id),
+        repair_price,
         comentario,
         descricao,
         status,
+        pecas: Array(pecas),
       },
     });
   } catch (err) {

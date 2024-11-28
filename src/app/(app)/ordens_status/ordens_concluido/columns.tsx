@@ -117,4 +117,21 @@ export const columns: ColumnDef<clientsct>[] = [
     header: "Status",
     cell: (info) => info.getValue(),
   },
+  {
+    id: "actions",
+    header: "Ações",
+    cell: ({ row }) => (
+      <button
+        onClick={() => {
+          // Redireciona para a página de edição com o ID do ticket
+          window.location.href = `/${row.original.id}/edit/ticket`;
+        }}
+        className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md"
+      >
+        Editar
+      </button>
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
 ];

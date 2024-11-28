@@ -25,8 +25,8 @@ export const DeviceForm = () => {
     () => {
       toast({
         variant: "default",
-        title: "Redirecionando para criar device",
-        description: "Aparelho cadastrado com sucesso vamos redirecionar você",
+        title: "Redirecionando para criar ticket",
+        description: "Aparelho cadastrado com sucesso vamos redirecionar para criar ticket",
         action: <Loader2 className="size-6 animate-spin" />,
       });
       setTimeout(() => {
@@ -37,8 +37,8 @@ export const DeviceForm = () => {
       if (!isPending && errors) {
         toast({
           variant: "destructive",
-          title: "Redirecionando para criar device",
-          description: "Aparelho já existe vamos redirecionar você",
+          title: "Redirecionando para criar ticket",
+          description: "Aparelho já existe vamos redirecionar para criação de ticket",
           action: <Loader2 className="size-6 animate-spin" />,
         }) &&
           setTimeout(() => {
