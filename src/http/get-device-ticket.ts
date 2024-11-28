@@ -12,7 +12,7 @@ export interface GetTicketResponse {
   updated_at: string;
   user_id: number;
   mobile_device_id: number;
-  repair_price?: number;
+  repair_price?: string;
   pecas: [];
   mobile_device?: {
     id: number;

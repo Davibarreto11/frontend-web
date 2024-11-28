@@ -11,16 +11,40 @@ import { useState } from "react";
 import { getClientByCPF } from "@/http/get-client-by-cpf";
 import { useFormState } from "@/hooks/user-form-state";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export const DeviceForm = () => {
+  const { toast } = useToast();
   const router = useRouter();
 
   const [cpf, setcpf] = useState<string>("");
 
   const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
     createDeviceAction,
-    async () => {
-      router.push("/register/ticket");
+    () => {
+      toast({
+        variant: "default",
+        title: "Redirecionando para criar ticket",
+        description: "Aparelho cadastrado com sucesso vamos redirecionar para criar ticket",
+        action: <Loader2 className="size-6 animate-spin" />,
+      });
+      setTimeout(() => {
+        router.push("/register/ticket");
+      }, 4000);
+    },
+    () => {
+      if (!isPending && errors) {
+        toast({
+          variant: "destructive",
+          title: "Redirecionando para criar ticket",
+          description: "Aparelho já existe vamos redirecionar para criação de ticket",
+          action: <Loader2 className="size-6 animate-spin" />,
+        }) &&
+          setTimeout(() => {
+            router.push("/register/ticket");
+          }, 4000);
+      }
     }
   );
 
@@ -37,6 +61,8 @@ export const DeviceForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <Toaster />
+
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
@@ -91,18 +117,10 @@ export const DeviceForm = () => {
             Nome
           </Label>
           <Input
-            type="text"
-            id="name"
-            name="name"
-            // value={getValues("name") || ""}
-            placeholder="Cristiano Oliveira"
             className="mt-1 p-5 block w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            value={client ? client[0].nome : "Pesquise cliente"}
+            defaultValue="Pesquise cliente"
           />
-          {errors?.name && (
-            <p className="text-xs font-medium text-red-500 dark:text-red-400">
-              {errors.name[0]}
-            </p>
-          )}
         </div>
 
         {/* Barra de separação */}

@@ -21,8 +21,10 @@ import { useState } from "react";
 import { useFormState } from "@/hooks/user-form-state";
 import { createTicketAction } from "./actions";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
-const sintomas = [
+const status = [
   "Pendente",
   "Em andamento",
   "Orçamento aprovado",
@@ -33,12 +35,39 @@ const sintomas = [
   "Pedido entregue",
 ];
 
+const sintoma = ["Energia", "Software", "Hardware"];
+
 export function TicketForm() {
+  const { toast } = useToast();
+
   const router = useRouter();
 
   const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
     createTicketAction,
-    async () => router.push("/")
+    () => {
+      toast({
+        variant: "default",
+        title: "Redirecionando para Dashboard",
+        description:
+          "Ticket cadastrado com sucesso vamos redirecionar você para dashboard",
+        action: <Loader2 className="size-6 animate-spin" />,
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 4000);
+    },
+    () => {
+      if (!isPending && errors) {
+        toast({
+          variant: "destructive",
+          title: "Error na criação de ticket",
+          description: "Ticket com esse IMEI já existe.",
+        }) &&
+          setTimeout(() => {
+            router.push("/register/ticket");
+          }, 4000);
+      }
+    }
   );
 
   const [imei, setIMEI] = useState<string>("");
@@ -48,7 +77,7 @@ export function TicketForm() {
     data: device,
     refetch,
   } = useQuery({
-    queryKey: ["clients"],
+    queryKey: ["devices"],
     queryFn: () => getDeviceByIMEI(imei),
     enabled: imei?.length > 14,
     retry: false,
@@ -56,6 +85,7 @@ export function TicketForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 mt-6">
+      <Toaster />
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
@@ -81,7 +111,7 @@ export function TicketForm() {
           htmlFor="sintoma"
           className="block text-sm font-medium text-gray-700"
         >
-          Sintoma
+          IMEI
         </Label>
         <Input
           type="text"
@@ -103,7 +133,50 @@ export function TicketForm() {
           htmlFor="sintoma"
           className="block text-sm font-medium text-gray-700"
         >
-          Sintoma
+          Aparelho do cliente
+        </Label>
+        <Input
+          value={device && device[0]?.modelo}
+          defaultValue="Pesquise o modelo"
+          className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+        />
+      </div>
+
+      <div className="flex-1 min-w-[230px]">
+        <Label
+          htmlFor="sintoma"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Status
+        </Label>
+        <Select name="status">
+          <SelectTrigger className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500">
+            <SelectValue placeholder="Selecione o Status de Inicio " />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Status</SelectLabel>
+              {status.map((status, index) => (
+                <SelectItem key={index} value={String(index)}>
+                  {status}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        {errors?.status && (
+          <p className="text-xs font-medium text-red-500 dark:text-red-400">
+            {errors.status[0]}
+          </p>
+        )}
+      </div>
+
+      <div className="flex-1 min-w-[230px]">
+        <Label
+          htmlFor="sintoma"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Sintomas
         </Label>
         <Select name="status">
           <SelectTrigger className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500">
@@ -112,7 +185,7 @@ export function TicketForm() {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Sintomas</SelectLabel>
-              {sintomas.map((sintoma, index) => (
+              {sintoma.map((sintoma, index) => (
                 <SelectItem key={index} value={String(index)}>
                   {sintoma}
                 </SelectItem>
@@ -171,16 +244,10 @@ export function TicketForm() {
 
       <Input
         type="hidden"
-        id="descricao"
         name="mobile_device_id"
         value={device && device[0]?.id}
         className="mt-1 p-5 border-2 w-full border-gray-300 rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
       />
-      {errors?.descricao && (
-        <p className="text-xs font-medium text-red-500 dark:text-red-400">
-          {errors.descricao[0]}
-        </p>
-      )}
 
       {/* Botão de Cadastro */}
       <div className="flex justify-end mt-8">

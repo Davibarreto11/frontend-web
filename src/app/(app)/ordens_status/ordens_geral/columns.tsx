@@ -3,7 +3,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
-import type { GetTicketResponse } from "@/http/get-device-ticket";
 import { format } from "date-fns";
 export type clientsct = {
   id: number;
@@ -134,4 +133,5 @@ export const columns: ColumnDef<clientsct>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  
 ];

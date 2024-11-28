@@ -17,7 +17,9 @@ export default function DemoPage() {
   });
 
   const filterTickets = tickets?.filter(
-    (ticket) => ticket.status === "Em andamento"
+    (ticket) =>
+      ticket.status !== "Pedido entregue" &&
+      ticket.status !== "Pedido reprovado entregue"
   );
 
   if (isLoading) return <p>Carregando...</p>;

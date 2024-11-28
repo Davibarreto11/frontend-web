@@ -134,4 +134,5 @@ export const columns: ColumnDef<clientsct>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  
 ];

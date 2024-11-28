@@ -17,7 +17,7 @@ export default function DemoPage() {
   });
 
   const filterTickets = tickets?.filter(
-    (ticket) => ticket.status === "Em andamento"
+    (ticket) => ticket.status === "Pendente"
   );
 
   if (isLoading) return <p>Carregando...</p>;
