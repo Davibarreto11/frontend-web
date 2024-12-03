@@ -2,7 +2,7 @@ import ky from "ky";
 import { getCookie as getCookieClient } from "cookies-next";
 
 const api = ky.create({
-  prefixUrl: "https://assisttech-web.onrender.com/api/",
+  prefixUrl: "https://assisttech-web.onrender.com/api/v1",
   hooks: {
     beforeRequest: [
       async (request) => {
