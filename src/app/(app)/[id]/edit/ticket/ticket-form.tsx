@@ -104,7 +104,7 @@ export function TicketForm() {
     const data = new FormData(form);
     console.log()
     if (selectedFile && selectedPecas.length > 0) {
-      data.set("pecas", selectedPecas);
+      data.set("pecas", selectedPecas[0]);
       data.set("id", String(id));
     }
 
